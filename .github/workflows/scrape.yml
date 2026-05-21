@@ -1,0 +1,35 @@
+name: Daily Property Scraper
+
+on:
+  schedule:
+    - cron: '0 12 * * *' # This means it runs every day at 12:00 PM UTC
+  workflow_dispatch: # This adds a magic button so you can test it manually right now!
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write 
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies (Rebuilds node_modules)
+        run: npm install
+        
+      - name: Run the property tracker
+        run: node monitor.js
+
+      - name: Save the new listings back to the folder
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add properties_history.json daily_report.md dashboard.html
+          git commit -m "Automated daily property update" || exit 0
+          git push
