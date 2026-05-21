@@ -1,0 +1,2137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belfast Property Market Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet Map Assets -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <style>
+    :root {
+      --bg-primary: hsl(222, 47%, 6%);
+      --bg-secondary: hsl(222, 47%, 10%);
+      --bg-card: rgba(18, 26, 42, 0.65);
+      --border-glow: rgba(56, 189, 248, 0.1);
+      --border-glass: rgba(255, 255, 255, 0.06);
+      --accent-cyan: hsl(190, 100%, 45%);
+      --accent-indigo: hsl(240, 100%, 70%);
+      --accent-rose: hsl(340, 100%, 65%);
+      --accent-gradient: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo));
+      --text-primary: hsl(210, 40%, 98%);
+      --text-secondary: hsl(215, 20%, 75%);
+      --text-muted: hsl(215, 12%, 55%);
+      --success-glow: rgba(34, 197, 94, 0.15);
+      --success-text: hsl(142, 70%, 45%);
+      --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+      background-image: 
+        radial-gradient(at 10% 20%, rgba(56, 189, 248, 0.05) 0px, transparent 50%),
+        radial-gradient(at 90% 80%, rgba(99, 102, 241, 0.05) 0px, transparent 50%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      margin-bottom: 2.5rem;
+      position: relative;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-glass);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .header-titles h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #fff, var(--text-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.2rem;
+      letter-spacing: -0.03em;
+    }
+
+    .header-titles p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+
+    .header-meta {
+      text-align: right;
+    }
+
+    .header-date {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+    }
+
+    .header-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Stats Section */
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-glass);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-premium);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent-gradient);
+      opacity: 0.7;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.3);
+      box-shadow: 0 15px 35px -10px rgba(56, 189, 248, 0.15);
+    }
+
+    .stat-card.rose::before {
+      background: var(--accent-rose);
+    }
+
+    .stat-card.cyan::before {
+      background: var(--accent-cyan);
+    }
+
+    .stat-card-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .stat-card-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* Controls Bar */
+    .controls-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(13, 19, 33, 0.8);
+      border: 1px solid var(--border-glass);
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-glass);
+      border-radius: 10px;
+      padding: 0.25rem 0.75rem;
+      width: 280px;
+      transition: all 0.3s ease;
+    }
+
+    .search-box:focus-within {
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .search-icon {
+      color: var(--text-muted);
+      margin-right: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .search-box input {
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      width: 100%;
+      outline: none;
+      padding: 0.4rem 0;
+    }
+
+    .search-box input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .tab-btn.active {
+      color: var(--text-primary);
+      background: var(--accent-gradient);
+      box-shadow: 0 4px 15px -4px rgba(56, 189, 248, 0.4);
+    }
+
+    .rate-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .rate-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .rate-btn-group {
+      display: flex;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.25rem;
+      border-radius: 10px;
+      border: 1px solid var(--border-glass);
+    }
+
+    .rate-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      padding: 0.4rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .rate-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .rate-btn.active {
+      background: var(--bg-primary);
+      color: var(--accent-cyan);
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    /* View Selector */
+    .view-selector {
+      display: flex;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.25rem;
+      border-radius: 10px;
+      border: 1px solid var(--border-glass);
+    }
+
+    .view-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      padding: 0.4rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .view-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .view-btn.active {
+      background: var(--bg-primary);
+      color: var(--accent-cyan);
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    /* Dynamic Mortgage Modeler Panel */
+    .modeler-panel {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-premium);
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .modeler-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .modeler-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .mode-selector {
+      display: flex;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.25rem;
+      border-radius: 10px;
+      border: 1px solid var(--border-glass);
+    }
+
+    .mode-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mode-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .mode-btn.active {
+      background: var(--bg-primary);
+      color: var(--accent-cyan);
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .modeler-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .modeler-control {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-glass);
+      padding: 1.2rem;
+      border-radius: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .modeler-control:hover {
+      border-color: rgba(56, 189, 248, 0.2);
+    }
+
+    .control-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .control-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .control-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    /* Custom range sliders styling */
+    .custom-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      outline: none;
+      transition: background 0.3s;
+      margin: 0.4rem 0;
+    }
+
+    .custom-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 10px var(--accent-cyan);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .custom-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+      background: #fff;
+      box-shadow: 0 0 15px #fff;
+    }
+
+    .custom-slider::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border: none;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 10px var(--accent-cyan);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .custom-slider::-moz-range-thumb:hover {
+      transform: scale(1.2);
+      background: #fff;
+      box-shadow: 0 0 15px #fff;
+    }
+
+    /* Collapsible Specific Calculator */
+    .customize-toggle-btn {
+      margin-top: 0.8rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      background: transparent;
+      border: 1px dashed var(--border-glass);
+      color: var(--text-secondary);
+      padding: 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      gap: 0.4rem;
+    }
+
+    .customize-toggle-btn:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+      color: var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.03);
+    }
+
+    .card-calculator {
+      display: none;
+      margin-top: 1rem;
+      background: rgba(13, 19, 33, 0.7);
+      border: 1px solid var(--border-glass);
+      border-radius: 12px;
+      padding: 1.2rem;
+      flex-direction: column;
+      gap: 1rem;
+      animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .calc-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      text-align: left;
+    }
+
+    .calc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .calc-val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .calc-input-box {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-glass);
+      border-radius: 6px;
+      padding: 0.2rem 0.5rem;
+      width: 100px;
+      text-align: right;
+    }
+
+    .calc-input-box span {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-right: 0.2rem;
+    }
+
+    .calc-input-box input {
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      width: 100%;
+      text-align: right;
+      font-family: 'Outfit', sans-serif;
+      font-weight: bold;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    /* Affordability warnings */
+    .affordability-warning {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: hsl(0, 85%, 65%);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-align: left;
+    }
+
+    /* Map View Styling */
+    #map-container {
+      width: 100%;
+      height: 600px;
+      border-radius: 20px;
+      border: 1px solid var(--border-glass);
+      background: var(--bg-card);
+      box-shadow: var(--shadow-premium);
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      display: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Glowing Custom Pins */
+    .custom-marker {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px !important;
+      height: 24px !important;
+    }
+
+    .marker-pin {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .marker-pin::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border-radius: 50%;
+      border: 1px solid inherit;
+      animation: pulse-ring 1.5s infinite;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(0.8);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(2.2);
+        opacity: 0;
+      }
+    }
+
+    .pin-standard {
+      background-color: var(--accent-cyan);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 12px var(--accent-cyan);
+    }
+    .pin-standard::after {
+      border-color: var(--accent-cyan);
+    }
+
+    .pin-priority {
+      background-color: var(--accent-rose);
+      border-color: var(--accent-rose);
+      box-shadow: 0 0 12px var(--accent-rose);
+    }
+    .pin-priority::after {
+      border-color: var(--accent-rose);
+    }
+
+    .pin-new {
+      background-color: var(--success-text);
+      border-color: var(--success-text);
+      box-shadow: 0 0 12px var(--success-text);
+    }
+    .pin-new::after {
+      border-color: var(--success-text);
+    }
+
+    /* Leaflet Dark Theme modifications */
+    .leaflet-container {
+      background-color: var(--bg-secondary) !important;
+      font-family: 'Inter', sans-serif !important;
+    }
+
+    .leaflet-bar {
+      border: 1px solid var(--border-glass) !important;
+      box-shadow: var(--shadow-premium) !important;
+      border-radius: 8px !important;
+      overflow: hidden;
+    }
+
+    .leaflet-bar a {
+      background-color: var(--bg-card) !important;
+      color: var(--text-primary) !important;
+      border-bottom: 1px solid var(--border-glass) !important;
+      transition: all 0.2s ease;
+    }
+
+    .leaflet-bar a:hover {
+      background-color: rgba(255, 255, 255, 0.08) !important;
+      color: var(--accent-cyan) !important;
+    }
+
+    .leaflet-popup-content-wrapper {
+      background: var(--bg-card) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border: 1px solid var(--border-glass) !important;
+      border-radius: 16px !important;
+      color: var(--text-primary) !important;
+      box-shadow: var(--shadow-premium) !important;
+      padding: 0.5rem !important;
+      max-width: 320px;
+    }
+
+    .leaflet-popup-tip {
+      background: var(--bg-card) !important;
+      border-left: 1px solid var(--border-glass) !important;
+      border-bottom: 1px solid var(--border-glass) !important;
+    }
+
+    .leaflet-popup-close-button {
+      color: var(--text-muted) !important;
+      top: 10px !important;
+      right: 10px !important;
+      font-size: 16px !important;
+      transition: color 0.2s ease;
+    }
+
+    .leaflet-popup-close-button:hover {
+      color: var(--accent-rose) !important;
+    }
+
+    .popup-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .popup-header {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.2rem;
+    }
+
+    .popup-price {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .popup-address {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-top: 0.15rem;
+    }
+
+    .popup-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0.2rem 0;
+    }
+
+    .popup-spec-pill {
+      font-size: 0.65rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-glass);
+      color: var(--text-secondary);
+    }
+
+    .popup-spec-pill.highlight {
+      background: rgba(56, 189, 248, 0.05);
+      border-color: rgba(56, 189, 248, 0.15);
+      color: var(--accent-cyan);
+    }
+
+    .popup-spec-pill.priority-pill {
+      background: rgba(244, 63, 94, 0.15);
+      border-color: rgba(244, 63, 94, 0.3);
+      color: var(--accent-rose);
+      font-weight: bold;
+    }
+
+    .popup-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .popup-mortgage {
+      background: rgba(13, 19, 33, 0.6);
+      border: 1px solid var(--border-glass);
+      border-radius: 8px;
+      padding: 0.5rem 0.8rem;
+      margin-top: 0.2rem;
+    }
+
+    .popup-mortgage-title {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.05em;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .popup-repayment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.4rem;
+      text-align: center;
+    }
+
+    .popup-repayment-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-glass);
+      border-radius: 5px;
+      padding: 0.25rem;
+    }
+
+    .popup-repayment-term {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+    }
+
+    .popup-repayment-val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    .popup-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      background: var(--accent-gradient);
+      color: var(--text-primary);
+      padding: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      gap: 0.3rem;
+      text-align: center;
+      border: none;
+      box-shadow: 0 4px 10px rgba(56, 189, 248, 0.25);
+    }
+
+    .popup-btn:hover {
+      opacity: 0.95;
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+    }
+
+    .popup-links-row {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.2rem;
+    }
+
+    .popup-map-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      text-decoration: none;
+      background: rgba(56, 189, 248, 0.05);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .popup-map-link:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--accent-cyan);
+    }
+
+    /* Properties Grid */
+    .properties-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Property Card */
+    .property-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-premium);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    .property-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .property-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 30px -10px rgba(56, 189, 248, 0.15);
+    }
+
+    .property-card:hover::after {
+      border-color: rgba(56, 189, 248, 0.2);
+    }
+
+    /* Card Badge */
+    .card-badges {
+      display: flex;
+      gap: 0.5rem;
+      position: absolute;
+      top: 1.5rem;
+      right: 1.8rem;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-new {
+      background: var(--success-glow);
+      color: var(--success-text);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.1);
+    }
+
+    .badge-priority {
+      background: rgba(244, 63, 94, 0.15);
+      color: var(--accent-rose);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      box-shadow: 0 0 10px rgba(244, 63, 94, 0.1);
+    }
+
+    /* Card Details */
+    .card-price {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card-address-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      gap: 0.5rem;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .card-address {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-grow: 1;
+      margin-bottom: 0;
+    }
+
+    .map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      text-decoration: none;
+      padding: 0.25rem 0.5rem;
+      background: rgba(56, 189, 248, 0.05);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .map-link:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+    }
+
+    .card-specs-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .spec-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-glass);
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.35rem 0.7rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .spec-pill.highlight {
+      background: rgba(56, 189, 248, 0.05);
+      border-color: rgba(56, 189, 248, 0.15);
+      color: var(--accent-cyan);
+    }
+
+    .card-agency {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Financial Repayment Panel */
+    .mortgage-panel {
+      background: rgba(13, 19, 33, 0.5);
+      border: 1px solid var(--border-glass);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .mortgage-panel-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.05em;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .mortgage-ltv-badge {
+      color: var(--accent-cyan);
+      font-weight: 700;
+    }
+
+    .repayment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+      text-align: center;
+    }
+
+    .repayment-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-glass);
+      border-radius: 8px;
+      padding: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .repayment-term {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .repayment-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      transition: color 0.2s ease;
+    }
+
+    /* Card Action Button */
+    .card-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass);
+      color: var(--text-primary);
+      padding: 0.8rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      gap: 0.5rem;
+    }
+
+    .card-btn:hover {
+      background: var(--text-primary);
+      color: var(--bg-primary);
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    }
+
+    .card-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .card-btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* Empty state */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 5rem 2rem;
+      background: var(--bg-card);
+      border: 1px dashed var(--border-glass);
+      border-radius: 20px;
+      color: var(--text-secondary);
+    }
+
+    .empty-state h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 992px) {
+      .controls-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-box {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .header-meta {
+        text-align: left;
+      }
+      .properties-grid {
+        grid-template-columns: 1fr;
+      }
+      #map-container {
+        height: 450px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-titles">
+        <h1>Belfast Property Monitor</h1>
+        <p>Strategic residential real estate tracking for first-time buyers</p>
+      </div>
+      <div class="header-meta">
+        <div class="header-date">Daily Analysis: 2026-05-21</div>
+        <div class="header-subtitle">BT1-BT17, BT18, BT36, BT37 | Terraced | &le; £250k</div>
+      </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <section class="stats-container">
+      <div class="stat-card">
+        <div class="stat-card-title">Total Checked Listings</div>
+        <div class="stat-card-value">77</div>
+      </div>
+      <div class="stat-card rose">
+        <div class="stat-card-title">🔥 High Priority Candidates</div>
+        <div class="stat-card-value">1</div>
+      </div>
+      <div class="stat-card cyan">
+        <div class="stat-card-title">🟢 New Additions Today</div>
+        <div class="stat-card-value">67</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-title">Average Asking Price</div>
+        <div class="stat-card-value">£161,168</div>
+      </div>
+    </section>
+
+    <!-- Global Mortgage Modeler Panel -->
+    <section class="modeler-panel">
+      <div class="modeler-header">
+        <h2>🛠️ Dynamic Mortgage Modeler</h2>
+        <div class="mode-selector">
+          <button class="mode-btn active" id="btn-mode-deposit" onclick="setModelerMode('deposit')">Fixed Deposit Mode</button>
+          <button class="mode-btn" id="btn-mode-ltv" onclick="setModelerMode('ltv')">Fixed LTV Mode</button>
+        </div>
+      </div>
+      
+      <div class="modeler-grid">
+        <!-- Slider 1: Deposit Amount -->
+        <div class="modeler-control" id="control-deposit">
+          <div class="control-header">
+            <span class="control-label">Global Deposit Budget</span>
+            <span class="control-value" id="val-global-deposit">£20,000</span>
+          </div>
+          <input type="range" class="custom-slider" id="slider-global-deposit" min="5000" max="100000" step="1000" value="20000" oninput="handleGlobalDepositChange(this.value)">
+        </div>
+
+        <!-- Slider 2: LTV Percentage -->
+        <div class="modeler-control" id="control-ltv" style="opacity: 0.4; pointer-events: none;">
+          <div class="control-header">
+            <span class="control-label">Global Loan-to-Value</span>
+            <span class="control-value" id="val-global-ltv">90% LTV <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">(10% Dep)</span></span>
+          </div>
+          <input type="range" class="custom-slider" id="slider-global-ltv" min="50" max="95" step="1" value="90" oninput="handleGlobalLTVChange(this.value)">
+        </div>
+
+        <!-- Slider 3: Interest Rate -->
+        <div class="modeler-control">
+          <div class="control-header">
+            <span class="control-label">Interest Rate</span>
+            <span class="control-value" id="val-global-rate">5.00%</span>
+          </div>
+          <input type="range" class="custom-slider" id="slider-global-rate" min="1.0" max="10.0" step="0.05" value="5.0" oninput="handleGlobalRateChange(this.value)">
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls Bar -->
+    <section class="controls-bar">
+      <div class="filter-tabs">
+        <button class="tab-btn active" onclick="setFilter('all', this)">All Listings</button>
+        <button class="tab-btn" onclick="setFilter('priority', this)">🔥 High Priority</button>
+        <button class="tab-btn" onclick="setFilter('new', this)">🟢 New Additions</button>
+        <button class="tab-btn" onclick="setFilter('freehold', this)">Freehold Only</button>
+      </div>
+
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="search-input" placeholder="Search address, postcode, agency..." oninput="handleSearch(this.value)">
+      </div>
+
+      <div class="view-selector">
+        <button class="view-btn active" id="btn-grid" onclick="setViewMode('grid')">Grid View</button>
+        <button class="view-btn" id="btn-map" onclick="setViewMode('map')">Map View</button>
+      </div>
+    </section>
+
+    <!-- Map View Element -->
+    <div id="map-container"></div>
+
+    <!-- Properties Grid -->
+    <main class="properties-grid" id="properties-list"></main>
+  </div>
+
+  <script>
+    // Raw properties injected by Node
+    const rawProperties = [{"href":"https://www.propertypal.com/lot-1-27-eccles-street-belfast/1077911","address":"(Lot 1) 27 Eccles Street, Belfast, BT13 3GS","price":75000,"postcode":"BT13 3GS","numBedrooms":2,"numBathrooms":2,"tenure":"Freehold","style":"Terrace House","agency":"BRG Gibson Auctions","latitude":54.606647,"longitude":-5.955711,"firstSeen":"2026-05-20","lastSeen":"2026-05-21","isNew":false,"repayments":{"4.5":{"25":375.19,"30":342.01,"35":319.45},"5.0":{"25":394.6,"30":362.35,"35":340.66},"5.5":{"25":414.51,"30":383.26,"35":362.49}}},{"href":"https://www.propertypal.com/19-ainsworth-parade-woodvale-road-belfast/1074533","address":"19 Ainsworth Parade, Woodvale Road, Belfast, BT13 3FP","price":66000,"postcode":"BT13 3FP","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"End-terrace House","agency":"Wilsons Auctions (NI)","latitude":54.606096,"longitude":-5.961491,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":330.16,"30":300.97,"35":281.11},"5.0":{"25":347.25,"30":318.87,"35":299.78},"5.5":{"25":364.77,"30":337.27,"35":318.99}}},{"href":"https://www.propertypal.com/26-rockview-street-belfast/1075109","address":"26 Rockview Street, Belfast, BT12 6JQ","price":89950,"postcode":"BT12 6JQ","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Mid-terrace House","agency":"CPS (Belfast)","latitude":54.58808819999999,"longitude":-5.9545473,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":449.97,"30":410.19,"35":383.12},"5.0":{"25":473.25,"30":434.58,"35":408.57},"5.5":{"25":497.13,"30":459.65,"35":434.74}}},{"href":"https://www.propertypal.com/64-benburb-street-belfast/1074448","address":"64 Benburb Street, Belfast, BT12 6JH","price":89950,"postcode":"BT12 6JH","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Mid-terrace House","agency":"CPS (Belfast)","latitude":54.58712939999999,"longitude":-5.956395499999999,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":449.97,"30":410.19,"35":383.12},"5.0":{"25":473.25,"30":434.58,"35":408.57},"5.5":{"25":497.13,"30":459.65,"35":434.74}}},{"href":"https://www.propertypal.com/59-fort-street-belfast/1077264","address":"59 Fort Street, Belfast, BT12 7BH","price":94950,"postcode":"BT12 7BH","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"CPS (Belfast)","latitude":54.59849029999999,"longitude":-5.962890199999999,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":474.99,"30":432.99,"35":404.42},"5.0":{"25":499.56,"30":458.74,"35":431.28},"5.5":{"25":524.77,"30":485.2,"35":458.91}}},{"href":"https://www.propertypal.com/66-stratford-gardens-belfast/1076314","address":"66 Stratford Gardens, Belfast, BT14 7NS","price":100000,"postcode":"BT14 7NS","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Simon Brien (North Belfast)","latitude":54.618158,"longitude":-5.96038,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":500.25,"30":456.02,"35":425.93},"5.0":{"25":526.13,"30":483.14,"35":454.22},"5.5":{"25":552.68,"30":511.01,"35":483.31}}},{"href":"https://www.propertypal.com/20-ebor-parade-belfast/1075409","address":"20 Ebor Parade, Belfast, BT12 6NS","price":105000,"postcode":"BT12 6NS","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"McGeown Estate Agents","latitude":54.5847351,"longitude":-5.956908900000001,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":525.26,"30":478.82,"35":447.23},"5.0":{"25":552.44,"30":507.3,"35":476.93},"5.5":{"25":580.31,"30":536.56,"35":507.48}}},{"href":"https://www.propertypal.com/21-coolfin-street-belfast/1074450","address":"21 Coolfin Street, Belfast, BT12 5PH","price":109950,"postcode":"BT12 5PH","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Colin Graham Residential","latitude":54.5879424,"longitude":-5.9446717,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":550.02,"30":501.39,"35":468.31},"5.0":{"25":578.48,"30":531.21,"35":499.41},"5.5":{"25":607.67,"30":561.86,"35":531.4}}},{"href":"https://www.propertypal.com/17-york-drive-belfast/1075845","address":"17 York Drive, Belfast, BT15 3QY","price":119950,"postcode":"BT15 3QY","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Colin Graham Residential","latitude":54.6256761,"longitude":-5.922165499999999,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":600.05,"30":546.99,"35":510.9},"5.0":{"25":631.09,"30":579.53,"35":544.84},"5.5":{"25":662.94,"30":612.96,"35":579.74}}},{"href":"https://www.propertypal.com/195-shore-crescent-shore-road-belfast/685655","address":"195 Shore Crescent, Shore Road, Belfast, BT15 4JS","price":119950,"postcode":"BT15 4JS","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Kitson Residential","latitude":54.6404904141652,"longitude":-5.9214109235691,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":600.05,"30":546.99,"35":510.9},"5.0":{"25":631.09,"30":579.53,"35":544.84},"5.5":{"25":662.94,"30":612.96,"35":579.74}}},{"href":"https://www.propertypal.com/26-mayflower-street-belfast/1077008","address":"26 Mayflower Street, Belfast, BT5 4SL","price":125000,"postcode":"BT5 4SL","numBedrooms":2,"numBathrooms":1,"tenure":"Leasehold","style":"Mid-terrace House","agency":"John Minnis Estate Agents","latitude":54.5923527,"longitude":-5.8949395,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":625.31,"30":570.02,"35":532.41},"5.0":{"25":657.66,"30":603.92,"35":567.77},"5.5":{"25":690.85,"30":638.76,"35":604.14}}},{"href":"https://www.propertypal.com/6-horseshoe-court-belfast/1076826","address":"6 Horseshoe Court, Belfast, BT14 8QE","price":129950,"postcode":"BT14 8QE","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"End-terrace House","agency":"House To Home Estate Agents","latitude":54.6295372902597,"longitude":-5.9797294576548,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":650.07,"30":592.59,"35":553.5},"5.0":{"25":683.71,"30":627.84,"35":590.26},"5.5":{"25":718.21,"30":664.06,"35":628.07}}},{"href":"https://www.propertypal.com/21-broadway-belfast/1076594","address":"21 Broadway, Belfast, BT12 6AS","price":129950,"postcode":"BT12 6AS","numBedrooms":4,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"NorthernProperty.com (Residential)","latitude":54.59211832650879,"longitude":-5.960219616628839,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":650.07,"30":592.59,"35":553.5},"5.0":{"25":683.71,"30":627.84,"35":590.26},"5.5":{"25":718.21,"30":664.06,"35":628.07}}},{"href":"https://www.propertypal.com/74-omeath-street-cregagh-belfast/1076531","address":"74 Omeath Street, Cregagh, Belfast, BT6 8ND","price":129950,"postcode":"BT6 8ND","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"McClearys Property Sales","latitude":54.588387753575155,"longitude":-5.902186879293356,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":650.07,"30":592.59,"35":553.5},"5.0":{"25":683.71,"30":627.84,"35":590.26},"5.5":{"25":718.21,"30":664.06,"35":628.07}}},{"href":"https://www.propertypal.com/66-amcomri-street-falls-road-belfast/1075669","address":"66 Amcomri Street, Falls Road, Belfast, BT12 7ND","price":129950,"postcode":"BT12 7ND","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"McGranaghan Estate Agents.com","latitude":54.5938968,"longitude":-5.965616,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":650.07,"30":592.59,"35":553.5},"5.0":{"25":683.71,"30":627.84,"35":590.26},"5.5":{"25":718.21,"30":664.06,"35":628.07}}},{"href":"https://www.propertypal.com/22-carlisle-walk-belfast/1075643","address":"22 Carlisle Walk, Belfast, BT15 2PX","price":129950,"postcode":"BT15 2PX","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"End-terrace House","agency":"Ulster Property Sales (Cavehill)","latitude":54.6086565,"longitude":-5.932686599999999,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":650.07,"30":592.59,"35":553.5},"5.0":{"25":683.71,"30":627.84,"35":590.26},"5.5":{"25":718.21,"30":664.06,"35":628.07}}},{"href":"https://www.propertypal.com/6-corrib-avenue-lenadoon-belfast/1075316","address":"6 Corrib Avenue, Lenadoon, Belfast, BT11 9JB","price":134950,"postcode":"BT11 9JB","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"McGranaghan Estate Agents.com","latitude":54.5756125,"longitude":-6.0084856,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":675.09,"30":615.39,"35":574.79},"5.0":{"25":710.01,"30":652,"35":612.97},"5.5":{"25":745.84,"30":689.61,"35":652.23}}},{"href":"https://www.propertypal.com/35-andersonstown-park-west-belfast/1074611","address":"35 Andersonstown Park West, Belfast, BT11 8FN","price":134950,"postcode":"BT11 8FN","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"End-terrace House","agency":"McGranaghan Estate Agents.com","latitude":54.5799027,"longitude":-5.984382,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":675.09,"30":615.39,"35":574.79},"5.0":{"25":710.01,"30":652,"35":612.97},"5.5":{"25":745.84,"30":689.61,"35":652.23}}},{"href":"https://www.propertypal.com/92-fane-street-belfast/1076178","address":"92 Fane Street, Belfast, BT9 7BW","price":135000,"postcode":"BT9 7BW","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Natalie Clarke Residential","latitude":54.58611089999999,"longitude":-5.950793099999999,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":675.34,"30":615.62,"35":575.01},"5.0":{"25":710.28,"30":652.24,"35":613.2},"5.5":{"25":746.12,"30":689.86,"35":652.47}}},{"href":"https://www.propertypal.com/12-carrington-street-ravenhill-road-belfast/1075560","address":"12 Carrington Street, Ravenhill Road, Belfast, BT6 8GF","price":135000,"postcode":"BT6 8GF","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Ulster Property Sales (Forestside)","latitude":54.5909306,"longitude":-5.9126167,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":675.34,"30":615.62,"35":575.01},"5.0":{"25":710.28,"30":652.24,"35":613.2},"5.5":{"25":746.12,"30":689.86,"35":652.47}}},{"href":"https://www.propertypal.com/69-donegall-road-belfast/1076542","address":"69 Donegall Road, Belfast, BT12 5JL","price":139950,"postcode":"BT12 5JL","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Mid-terrace House","agency":"CPS (Belfast)","latitude":54.5893451,"longitude":-5.9384045,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":700.1,"30":638.2,"35":596.09},"5.0":{"25":736.32,"30":676.15,"35":635.68},"5.5":{"25":773.47,"30":715.16,"35":676.4}}},{"href":"https://www.propertypal.com/11-drumadoon-drive-dundonald-belfast/1076495","address":"11 Drumadoon Drive, Dundonald, Belfast, BT16 2LY","price":140000,"postcode":"BT16 2LY","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"End-terrace House","agency":"Andrews & Gregg (Dundonald)","latitude":54.5923300577537,"longitude":-5.796587043679648,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":700.35,"30":638.42,"35":596.3},"5.0":{"25":736.58,"30":676.4,"35":635.91},"5.5":{"25":773.75,"30":715.41,"35":676.64}}},{"href":"https://www.propertypal.com/83-sunnyhill-park-upper-dunmurry-lane-belfast/1076901","address":"83 Sunnyhill Park, Upper Dunmurry Lane, Belfast, BT17 0PY","price":144950,"postcode":"BT17 0PY","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Ulster Property Sales (Andersonstown)","latitude":54.5532968,"longitude":-6.007485,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":725.11,"30":661,"35":617.39},"5.0":{"25":762.63,"30":700.31,"35":658.39},"5.5":{"25":801.11,"30":740.71,"35":700.56}}},{"href":"https://www.propertypal.com/8-alexandra-avenue-antrim-road-belfast/1076656","address":"8 Alexandra Avenue, Antrim Road, Belfast, BT15 3AU","price":144950,"postcode":"BT15 3AU","numBedrooms":4,"numBathrooms":1,"tenure":"Not Provided","style":"End-terrace House","agency":"McG Shanks Estate Agents.com","latitude":54.6176036176877,"longitude":-5.93390982408141,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":725.11,"30":661,"35":617.39},"5.0":{"25":762.63,"30":700.31,"35":658.39},"5.5":{"25":801.11,"30":740.71,"35":700.56}}},{"href":"https://www.propertypal.com/8-alexandra-avenue-antrim-road-belfast/1076650","address":"8 Alexandra Avenue, Antrim Road, Belfast, BT15 3AU","price":144950,"postcode":"BT15 3AU","numBedrooms":4,"numBathrooms":1,"tenure":"Not Provided","style":"End-terrace House","agency":"McGranaghan Estate Agents.com","latitude":54.6176036176877,"longitude":-5.93390982408141,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":725.11,"30":661,"35":617.39},"5.0":{"25":762.63,"30":700.31,"35":658.39},"5.5":{"25":801.11,"30":740.71,"35":700.56}}},{"href":"https://www.propertypal.com/36-broom-park-dunmurry-belfast/1076871","address":"36 Broom Park, Dunmurry, Belfast, BT17 0DL","price":149950,"postcode":"BT17 0DL","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Mid-terrace House","agency":"Ulster Property Sales (Andersonstown)","latitude":54.5475764,"longitude":-6.024754799999999,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":750.12,"30":683.8,"35":638.68},"5.0":{"25":788.93,"30":724.47,"35":681.1},"5.5":{"25":828.74,"30":766.26,"35":724.73}}},{"href":"https://www.propertypal.com/203-laurelbank-poleglass-dunmurry-belfast/1075253","address":"203 Laurelbank, Poleglass, Dunmurry, Belfast, BT17 0RT","price":149950,"postcode":"BT17 0RT","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"End-terrace House","agency":"Ulster Property Sales (Andersonstown)","latitude":54.5611983,"longitude":-6.024202100000001,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":750.12,"30":683.8,"35":638.68},"5.0":{"25":788.93,"30":724.47,"35":681.1},"5.5":{"25":828.74,"30":766.26,"35":724.73}}},{"href":"https://www.propertypal.com/10-minnowburn-drive-grays-park-belfast/1074529","address":"10 Minnowburn Drive, Grays Park, Belfast, BT8 7QJ","price":149950,"postcode":"BT8 7QJ","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"McClearys Property Sales","latitude":54.54872097196702,"longitude":-5.934854388919599,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":750.12,"30":683.8,"35":638.68},"5.0":{"25":788.93,"30":724.47,"35":681.1},"5.5":{"25":828.74,"30":766.26,"35":724.73}}},{"href":"https://www.propertypal.com/81-rowan-drive-dunmurry-belfast/1076844","address":"81 Rowan Drive, Dunmurry, Belfast, BT17 9QE","price":150000,"postcode":"BT17 9QE","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Templeton Robinson (Lisburn)","latitude":54.541714546676,"longitude":-6.0071063314375,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":750.37,"30":684.03,"35":638.9},"5.0":{"25":789.2,"30":724.71,"35":681.33},"5.5":{"25":829.02,"30":766.52,"35":724.97}}},{"href":"https://www.propertypal.com/69-moyard-parade-springfield-road-belfast/1055632","address":"69 Moyard Parade, Springfield Road, Belfast, BT12 7HA","price":154950,"postcode":"BT12 7HA","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"McGranaghan Estate Agents.com","latitude":54.5977482,"longitude":-5.9885725,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":775.14,"30":706.6,"35":659.98},"5.0":{"25":815.24,"30":748.62,"35":703.81},"5.5":{"25":856.38,"30":791.81,"35":748.9}}},{"href":"https://www.propertypal.com/48-enler-park-west-dundonald-belfast/1076922","address":"48 Enler Park West, Dundonald, Belfast, BT16 2DS","price":155000,"postcode":"BT16 2DS","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Andrews & Gregg (Dundonald)","latitude":54.587988920488904,"longitude":-5.7977890726219705,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":775.39,"30":706.83,"35":660.19},"5.0":{"25":815.5,"30":748.87,"35":704.04},"5.5":{"25":856.65,"30":792.07,"35":749.14}}},{"href":"https://www.propertypal.com/81-cheviot-avenue-belfast/1077260","address":"81 Cheviot Avenue, Belfast, BT4 3AG","price":159500,"postcode":"BT4 3AG","numBedrooms":4,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Ulster Property Sales (Ballyhackamore)","latitude":54.59825069999999,"longitude":-5.8850735,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":797.9,"30":727.35,"35":679.36},"5.0":{"25":839.18,"30":770.61,"35":724.48},"5.5":{"25":881.52,"30":815.06,"35":770.89}}},{"href":"https://www.propertypal.com/111-edinburgh-street-belfast/1076494","address":"111 Edinburgh Street, Belfast, BT9 7DT","price":159950,"postcode":"BT9 7DT","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Mid-terrace House","agency":"GOC Estate Agents","latitude":54.58276547498633,"longitude":-5.951512430194534,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":800.15,"30":729.4,"35":681.28},"5.0":{"25":841.55,"30":772.78,"35":726.52},"5.5":{"25":884.01,"30":817.36,"35":773.06}}},{"href":"https://www.propertypal.com/62-glendower-street-cregagh-road-belfast/1076418","address":"62 Glendower Street, Cregagh Road, Belfast, BT6 8PD","price":159950,"postcode":"BT6 8PD","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Pooler Estate Agents","latitude":54.5836291070223,"longitude":-5.90129797034886,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":800.15,"30":729.4,"35":681.28},"5.0":{"25":841.55,"30":772.78,"35":726.52},"5.5":{"25":884.01,"30":817.36,"35":773.06}}},{"href":"https://www.propertypal.com/6-lower-braniel-road-belfast/1076380","address":"6 Lower Braniel Road, Belfast, BT5 7JQ","price":159950,"postcode":"BT5 7JQ","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Ulster Property Sales (Ballyhackamore)","latitude":54.5777951,"longitude":-5.864926400000001,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":800.15,"30":729.4,"35":681.28},"5.0":{"25":841.55,"30":772.78,"35":726.52},"5.5":{"25":884.01,"30":817.36,"35":773.06}}},{"href":"https://www.propertypal.com/13-victoria-road-belfast/1076861","address":"13 Victoria Road, Belfast, BT4 1QU","price":164950,"postcode":"BT4 1QU","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Mid-terrace House","agency":"Fetherstons (East Belfast Office)","latitude":54.6069779012296,"longitude":-5.8771381349182,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":825.16,"30":752.2,"35":702.57},"5.0":{"25":867.85,"30":796.94,"35":749.23},"5.5":{"25":911.64,"30":842.91,"35":797.23}}},{"href":"https://www.propertypal.com/11-laburnum-way-twinbrook-belfast/1076617","address":"11 Laburnum Way, Twinbrook, Belfast, BT17 0BW","price":164950,"postcode":"BT17 0BW","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"TMC Estate Agents (Andersonstown)","latitude":54.553932,"longitude":-6.022688,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":825.16,"30":752.2,"35":702.57},"5.0":{"25":867.85,"30":796.94,"35":749.23},"5.5":{"25":911.64,"30":842.91,"35":797.23}}},{"href":"https://www.propertypal.com/37-hollymount-erinvale-belfast/1075919","address":"37 Hollymount, Erinvale, Belfast, BT10 0GN","price":164950,"postcode":"BT10 0GN","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"TMC Estate Agents (Finaghy)","latitude":54.55327741104554,"longitude":-5.982301387023918,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":825.16,"30":752.2,"35":702.57},"5.0":{"25":867.85,"30":796.94,"35":749.23},"5.5":{"25":911.64,"30":842.91,"35":797.23}}},{"href":"https://www.propertypal.com/5-milford-street-falls-road-belfast/1075389","address":"5 Milford Street, Falls Road, Belfast, BT12","price":164950,"postcode":"BT12","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"End-terrace House","agency":"Ulster Property Sales (Andersonstown)","latitude":54.5986163,"longitude":-5.9428693,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":825.16,"30":752.2,"35":702.57},"5.0":{"25":867.85,"30":796.94,"35":749.23},"5.5":{"25":911.64,"30":842.91,"35":797.23}}},{"href":"https://www.propertypal.com/11-annadale-gardens-annadale-avenue-belfast/1041927","address":"11 Annadale Gardens, Annadale Avenue, Belfast, BT7 3DS","price":165000,"postcode":"BT7 3DS","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"End-terrace House","agency":"Ulster Property Sales (Forestside)","latitude":54.57418269999999,"longitude":-5.9268924,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":825.41,"30":752.43,"35":702.79},"5.0":{"25":868.12,"30":797.18,"35":749.46},"5.5":{"25":911.92,"30":843.17,"35":797.47}}},{"href":"https://www.propertypal.com/54-locksley-gardens-finaghy-belfast/1074737","address":"54 Locksley Gardens, Finaghy, Belfast, BT10 0EB","price":165000,"postcode":"BT10 0EB","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"TMC Estate Agents (Finaghy)","latitude":54.55946175148838,"longitude":-5.978675040435784,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":825.41,"30":752.43,"35":702.79},"5.0":{"25":868.12,"30":797.18,"35":749.46},"5.5":{"25":911.92,"30":843.17,"35":797.47}}},{"href":"https://www.propertypal.com/53-lichfield-avenue-belfast/1076386","address":"53 Lichfield Avenue, Belfast, BT5 5JQ","price":169950,"postcode":"BT5 5JQ","numBedrooms":4,"numBathrooms":1,"tenure":"Not Provided","style":"Mid-terrace House","agency":"Fetherstons (East Belfast Office)","latitude":54.5923225751908,"longitude":-5.8840434450912,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":850.17,"30":775,"35":723.87},"5.0":{"25":894.16,"30":821.1,"35":771.95},"5.5":{"25":939.28,"30":868.46,"35":821.39}}},{"href":"https://www.propertypal.com/81-tildarg-street-woodstock-belfast/1076059","address":"81 Tildarg Street, Woodstock, Belfast, BT6 8NJ","price":172500,"postcode":"BT6 8NJ","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Pooler Estate Agents","latitude":54.5868444576068,"longitude":-5.90140473280536,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":862.93,"30":786.63,"35":734.73},"5.0":{"25":907.58,"30":833.42,"35":783.53},"5.5":{"25":953.37,"30":881.49,"35":833.72}}},{"href":"https://www.propertypal.com/13-weston-drive-belfast/1076725","address":"13 Weston Drive, Belfast, BT9 7JF","price":175000,"postcode":"BT9 7JF","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Ulster Property Sales (Lisburn Road)","latitude":54.5701957,"longitude":-5.9680298,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":875.44,"30":798.03,"35":745.38},"5.0":{"25":920.73,"30":845.49,"35":794.88},"5.5":{"25":967.19,"30":894.27,"35":845.8}}},{"href":"https://www.propertypal.com/27-willowbank-gardens-belfast/1076562","address":"27 Willowbank Gardens, Belfast, BT15 5AH","price":175000,"postcode":"BT15 5AH","numBedrooms":4,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Ulster Property Sales (Cavehill)","latitude":54.6215667,"longitude":-5.9383987,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":875.44,"30":798.03,"35":745.38},"5.0":{"25":920.73,"30":845.49,"35":794.88},"5.5":{"25":967.19,"30":894.27,"35":845.8}}},{"href":"https://www.propertypal.com/57a-ravenhill-parade-belfast/1075380","address":"57a Ravenhill Parade, Belfast, BT6 8NU","price":175000,"postcode":"BT6 8NU","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Pooler Estate Agents","latitude":54.5845007,"longitude":-5.9031079,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":875.44,"30":798.03,"35":745.38},"5.0":{"25":920.73,"30":845.49,"35":794.88},"5.5":{"25":967.19,"30":894.27,"35":845.8}}},{"href":"https://www.propertypal.com/30-reid-street-cregagh-road-belfast/1075306","address":"30 Reid Street, Cregagh Road, Belfast, BT6 8PE","price":175000,"postcode":"BT6 8PE","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Pooler Estate Agents","latitude":54.5834136707242,"longitude":-5.89998571256681,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":875.44,"30":798.03,"35":745.38},"5.0":{"25":920.73,"30":845.49,"35":794.88},"5.5":{"25":967.19,"30":894.27,"35":845.8}}},{"href":"https://www.propertypal.com/13-geeragh-place-finaghy-belfast/1075941","address":"13 Geeragh Place, Finaghy, Belfast, BT10 0ER","price":175950,"postcode":"BT10 0ER","numBedrooms":4,"numBathrooms":1,"tenure":"Not Provided","style":"End-terrace House","agency":"James Duggan Estates","latitude":54.5583975793126,"longitude":-5.9813122395924,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":880.19,"30":802.36,"35":749.43},"5.0":{"25":925.73,"30":850.08,"35":799.2},"5.5":{"25":972.44,"30":899.12,"35":850.39}}},{"href":"https://www.propertypal.com/13-parkmore-street-belfast/1076123","address":"13 Parkmore Street, Belfast, BT7 2GT","price":179950,"postcode":"BT7 2GT","numBedrooms":2,"numBathrooms":1,"tenure":"Leasehold","style":"End-terrace House","agency":"Michael Chandler Estate Agents (Belfast)","latitude":54.5776966,"longitude":-5.9176231,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":900.2,"30":820.6,"35":766.46},"5.0":{"25":946.77,"30":869.41,"35":817.37},"5.5":{"25":994.55,"30":919.56,"35":869.72}}},{"href":"https://www.propertypal.com/38-sunnyside-street-belfast/1075780","address":"38 Sunnyside Street, Belfast, BT7 3EX","price":180000,"postcode":"BT7 3EX","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Belvoir (Belfast South)","latitude":54.57534649999999,"longitude":-5.9185517,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":900.45,"30":820.83,"35":766.68},"5.0":{"25":947.04,"30":869.65,"35":817.59},"5.5":{"25":994.82,"30":919.82,"35":869.97}}},{"href":"https://www.propertypal.com/134-donnybrook-street-tates-avenue-belfast/1074661","address":"134 Donnybrook Street, Tates Avenue, Belfast, BT9 7DG","price":180000,"postcode":"BT9 7DG","numBedrooms":3,"numBathrooms":1,"tenure":"Leasehold","style":"Mid-terrace House","agency":"MSR Estate Agents (Lurgan)","latitude":54.5835033570008,"longitude":-5.9509301725019,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":900.45,"30":820.83,"35":766.68},"5.0":{"25":947.04,"30":869.65,"35":817.59},"5.5":{"25":994.82,"30":919.82,"35":869.97}}},{"href":"https://www.propertypal.com/302-beersbridge-road-belfast/1074418","address":"302 Beersbridge Road, Belfast, BT5 5DY","price":180000,"postcode":"BT5 5DY","numBedrooms":4,"numBathrooms":2,"tenure":"Not Provided","style":"Terrace House","agency":"Belvoir (Belfast South)","latitude":54.5932693,"longitude":-5.8887298,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":900.45,"30":820.83,"35":766.68},"5.0":{"25":947.04,"30":869.65,"35":817.59},"5.5":{"25":994.82,"30":919.82,"35":869.97}}},{"href":"https://www.propertypal.com/31-knock-eden-crescent-belfast/1076654","address":"31 Knock Eden Crescent, Belfast, BT6 0GQ","price":185000,"postcode":"BT6 0GQ","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Simon Brien (East Belfast)","latitude":54.574304,"longitude":-5.904791,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":925.46,"30":843.63,"35":787.97},"5.0":{"25":973.34,"30":893.81,"35":840.3},"5.5":{"25":1022.46,"30":945.37,"35":894.13}}},{"href":"https://www.propertypal.com/24-ardenlee-gardens-belfast/1076638","address":"24 Ardenlee Gardens, Belfast, BT6 8QG","price":185000,"postcode":"BT6 8QG","numBedrooms":3,"numBathrooms":1,"tenure":"Leasehold","style":"Terrace House","agency":"Carolyn Edgar Homes","latitude":54.584507,"longitude":-5.903883,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":925.46,"30":843.63,"35":787.97},"5.0":{"25":973.34,"30":893.81,"35":840.3},"5.5":{"25":1022.46,"30":945.37,"35":894.13}}},{"href":"https://www.propertypal.com/50-fernwood-street-belfast/1076612","address":"50 Fernwood Street, Belfast, BT7 3BQ","price":185000,"postcode":"BT7 3BQ","numBedrooms":3,"numBathrooms":1,"tenure":"Leasehold","style":"Mid-terrace House","agency":"Michael Chandler Estate Agents (Belfast)","latitude":54.5776668,"longitude":-5.9230452,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":925.46,"30":843.63,"35":787.97},"5.0":{"25":973.34,"30":893.81,"35":840.3},"5.5":{"25":1022.46,"30":945.37,"35":894.13}}},{"href":"https://www.propertypal.com/2a-thiepval-avenue-belfast/1075352","address":"2a Thiepval Avenue, Belfast, BT6 9JF","price":185000,"postcode":"BT6 9JF","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"End-terrace House","agency":"McClearys Property Sales","latitude":54.57496778986079,"longitude":-5.893489504002309,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":925.46,"30":843.63,"35":787.97},"5.0":{"25":973.34,"30":893.81,"35":840.3},"5.5":{"25":1022.46,"30":945.37,"35":894.13}}},{"href":"https://www.propertypal.com/1-sandringham-mews-belfast/1077278","address":"1 Sandringham Mews, Belfast, BT5 6JX","price":189950,"postcode":"BT5 6JX","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Simon Brien (East Belfast)","latitude":54.593586,"longitude":-5.85682,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":950.22,"30":866.2,"35":809.06},"5.0":{"25":999.39,"30":917.72,"35":862.79},"5.5":{"25":1049.81,"30":970.66,"35":918.06}}},{"href":"https://www.propertypal.com/11a-richmond-heights-holywood/1077111","address":"11a Richmond Heights, Holywood, BT18 9TF","price":195000,"postcode":"BT18 9TF","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"End Townhouse","agency":"Bennett Estate Agents","latitude":54.6206082,"longitude":-5.8513111,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":975.49,"30":889.23,"35":830.57},"5.0":{"25":1025.96,"30":942.12,"35":885.73},"5.5":{"25":1077.72,"30":996.47,"35":942.46}}},{"href":"https://www.propertypal.com/60-kimberley-street-off-ormeau-road-belfast/1077035","address":"60 Kimberley Street, Off Ormeau Road, Belfast, BT7 3DY","price":199950,"postcode":"BT7 3DY","numBedrooms":4,"numBathrooms":1,"tenure":"Leasehold","style":"Terrace House","agency":"GOC Estate Agents","latitude":54.577277011283144,"longitude":-5.9212525532341065,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":1000.25,"30":911.81,"35":851.65},"5.0":{"25":1052,"30":966.04,"35":908.21},"5.5":{"25":1105.08,"30":1021.76,"35":966.39}}},{"href":"https://www.propertypal.com/1-laganvale-street-stranmillis-belfast/1075806","address":"1 Laganvale Street, Stranmillis, Belfast, BT9 5FR","price":199950,"postcode":"BT9 5FR","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"End-terrace House","agency":"GOC Estate Agents","latitude":54.57267080682885,"longitude":-5.9304528546593716,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":1000.25,"30":911.81,"35":851.65},"5.0":{"25":1052,"30":966.04,"35":908.21},"5.5":{"25":1105.08,"30":1021.76,"35":966.39}}},{"href":"https://www.propertypal.com/32-millar-street-belfast/1075826","address":"32 Millar Street, Belfast, BT6 8JZ","price":199995,"postcode":"BT6 8JZ","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Belvoir (Belfast South)","latitude":54.58415369999999,"longitude":-5.906063,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":1000.47,"30":912.01,"35":851.84},"5.0":{"25":1052.24,"30":966.25,"35":908.42},"5.5":{"25":1105.33,"30":1021.99,"35":966.61}}},{"href":"https://www.propertypal.com/89-cliftonville-road-belfast/483768","address":"89 Cliftonville Road, Belfast, BT14 6JP","price":200000,"postcode":"BT14 6JP","numBedrooms":8,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Ulster Property Sales (Cavehill)","latitude":54.6166831,"longitude":-5.9444211,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":1000.5,"30":912.03,"35":851.86},"5.0":{"25":1052.26,"30":966.28,"35":908.44},"5.5":{"25":1105.36,"30":1022.02,"35":966.63}}},{"href":"https://www.propertypal.com/24-whitehall-gardens-belfast/1075844","address":"24 Whitehall Gardens, Belfast, BT7 3GW","price":209950,"postcode":"BT7 3GW","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Mid-terrace House","agency":"CPS (Belfast)","latitude":54.5749743,"longitude":-5.9180371,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":1050.27,"30":957.41,"35":894.24},"5.0":{"25":1104.61,"30":1014.35,"35":953.63},"5.5":{"25":1160.35,"30":1072.87,"35":1014.72}}},{"href":"https://www.propertypal.com/15-laganvale-street-belfast/1075584","address":"15 Laganvale Street, Belfast, BT9 5FR","price":209950,"postcode":"BT9 5FR","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Mid-terrace House","agency":"Templeton Robinson (Lisburn Road)","latitude":54.572518341657904,"longitude":-5.930748616096489,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":1050.27,"30":957.41,"35":894.24},"5.0":{"25":1104.61,"30":1014.35,"35":953.63},"5.5":{"25":1160.35,"30":1072.87,"35":1014.72}}},{"href":"https://www.propertypal.com/44-stranmillis-gardens-belfast/1074561","address":"44 Stranmillis Gardens, Belfast, BT9 5AT","price":215000,"postcode":"BT9 5AT","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Ulster Property Sales (Lisburn Road)","latitude":54.5804532,"longitude":-5.9331973,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":1075.54,"30":980.44,"35":915.75},"5.0":{"25":1131.18,"30":1038.75,"35":976.57},"5.5":{"25":1188.26,"30":1098.67,"35":1039.13}}},{"href":"https://www.propertypal.com/1a-cloghan-crescent-belfast/1076375","address":"1a Cloghan Crescent, Belfast, BT5 7HG","price":249950,"postcode":"BT5 7HG","numBedrooms":4,"numBathrooms":2,"tenure":"Not Provided","style":"Townhouse","agency":"Ulster Property Sales (Ballyhackamore)","latitude":54.5934543,"longitude":-5.835297199999999,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":1250.37,"30":1139.81,"35":1064.61},"5.0":{"25":1315.06,"30":1207.61,"35":1135.32},"5.5":{"25":1381.42,"30":1277.27,"35":1208.04}}},{"href":"https://www.propertypal.com/2-rushfield-avenue-ormeau-road-belfast/1075870","address":"2 Rushfield Avenue, Ormeau Road, Belfast, BT7 3FP","price":250000,"postcode":"BT7 3FP","numBedrooms":4,"numBathrooms":2,"tenure":"Not Provided","style":"End-terrace House","agency":"Ulster Property Sales (Forestside)","latitude":54.57802530000001,"longitude":-5.919616,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":1250.62,"30":1140.04,"35":1064.83},"5.0":{"25":1315.33,"30":1207.85,"35":1135.55},"5.5":{"25":1381.7,"30":1277.53,"35":1208.29}}},{"href":"https://www.propertypal.com/34-belmont-avenue-belfast/1074360","address":"34 Belmont Avenue, Belfast, BT4 3DD","price":250000,"postcode":"BT4 3DD","numBedrooms":4,"numBathrooms":1,"tenure":"Leasehold","style":"Mid-terrace House","agency":"John Minnis Estate Agents","latitude":54.5990985,"longitude":-5.872999,"firstSeen":"2026-05-21","lastSeen":"2026-05-21","isNew":true,"repayments":{"4.5":{"25":1250.62,"30":1140.04,"35":1064.83},"5.0":{"25":1315.33,"30":1207.85,"35":1135.55},"5.5":{"25":1381.7,"30":1277.53,"35":1208.29}}},{"href":"https://www.propertypal.com/69-gainsborough-drive-belfast/1077916","address":"69 Gainsborough Drive, Belfast, BT15 3EJ","price":135000,"postcode":"BT15 3EJ","numBedrooms":3,"numBathrooms":2,"tenure":"Not Provided","style":"Terrace House","agency":"Ulster Property Sales (Cavehill)","latitude":54.61781689999999,"longitude":-5.927694199999999,"firstSeen":"2026-05-20","lastSeen":"2026-05-21","isNew":false,"repayments":{"4.5":{"25":675.34,"30":615.62,"35":575.01},"5.0":{"25":710.28,"30":652.24,"35":613.2},"5.5":{"25":746.12,"30":689.86,"35":652.47}}},{"href":"https://www.propertypal.com/31-inchmarnock-drive-dundonald-belfast/1078060","address":"31 Inchmarnock Drive, Dundonald, Belfast, BT16 2ND","price":145000,"postcode":"BT16 2ND","numBedrooms":4,"numBathrooms":1,"tenure":"Not Provided","style":"End-terrace House","agency":"Andrews & Gregg (Dundonald)","latitude":54.59084030226817,"longitude":-5.795215288534155,"firstSeen":"2026-05-20","lastSeen":"2026-05-21","isNew":false,"repayments":{"4.5":{"25":725.36,"30":661.22,"35":617.6},"5.0":{"25":762.89,"30":700.55,"35":658.62},"5.5":{"25":801.38,"30":740.96,"35":700.81}}},{"href":"https://www.propertypal.com/73-lenadoon-avenue-belfast/1028175","address":"73 Lenadoon Avenue, Belfast, BT11 9HD","price":149950,"postcode":"BT11 9HD","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Mid-terrace House","agency":"Ulster Property Sales (Andersonstown)","latitude":54.5729009,"longitude":-6.012659699999999,"firstSeen":"2026-05-20","lastSeen":"2026-05-21","isNew":false,"repayments":{"4.5":{"25":750.12,"30":683.8,"35":638.68},"5.0":{"25":788.93,"30":724.47,"35":681.1},"5.5":{"25":828.74,"30":766.26,"35":724.73}}},{"href":"https://www.propertypal.com/15-station-view-dunmurry-belfast/1078093","address":"15 Station View, Dunmurry, Belfast, BT17 0AE","price":160000,"postcode":"BT17 0AE","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Terrace House","agency":"Ulster Property Sales (Lisburn Road)","latitude":54.5531454,"longitude":-6.0017751,"firstSeen":"2026-05-20","lastSeen":"2026-05-21","isNew":false,"repayments":{"4.5":{"25":800.4,"30":729.63,"35":681.49},"5.0":{"25":841.81,"30":773.02,"35":726.75},"5.5":{"25":884.29,"30":817.62,"35":773.3}}},{"href":"https://www.propertypal.com/141-parkgate-avenue-belfast/1077830","address":"141 Parkgate Avenue, Belfast, BT4 1JD","price":164950,"postcode":"BT4 1JD","numBedrooms":2,"numBathrooms":1,"tenure":"Not Provided","style":"Mid-terrace House","agency":"Ulster Property Sales (Ballyhackamore)","latitude":54.601071,"longitude":-5.8853647,"firstSeen":"2026-05-20","lastSeen":"2026-05-21","isNew":false,"repayments":{"4.5":{"25":825.16,"30":752.2,"35":702.57},"5.0":{"25":867.85,"30":796.94,"35":749.23},"5.5":{"25":911.64,"30":842.91,"35":797.23}}},{"href":"https://www.propertypal.com/46-benmore-drive-finaghy-belfast/1078059","address":"46 Benmore Drive, Finaghy, Belfast, BT10 0EE","price":197950,"postcode":"BT10 0EE","numBedrooms":3,"numBathrooms":1,"tenure":"Not Provided","style":"Mid-terrace House","agency":"GOC Estate Agents","latitude":54.55947275761023,"longitude":-5.979444684706499,"firstSeen":"2026-05-20","lastSeen":"2026-05-21","isNew":false,"repayments":{"4.5":{"25":990.24,"30":902.69,"35":843.13},"5.0":{"25":1041.48,"30":956.37,"35":899.13},"5.5":{"25":1094.03,"30":1011.54,"35":956.72}}},{"href":"https://www.propertypal.com/6ix-alexandra-park-avenue-belfast/d3790","address":"6ix Alexandra Park Avenue, Belfast","price":209950,"postcode":"BT15","numBedrooms":0,"numBathrooms":1,"tenure":"Unknown","style":"Terraced House","agency":"BlueHouse Development Ltd","latitude":54.6173627947486,"longitude":-5.9254958868943,"firstSeen":"2026-05-20","lastSeen":"2026-05-21","isNew":false,"repayments":{"4.5":{"25":1050.27,"30":957.41,"35":894.24},"5.0":{"25":1104.61,"30":1014.35,"35":953.63},"5.5":{"25":1160.35,"30":1072.87,"35":1014.72}}},{"href":"https://www.propertypal.com/17-raby-street-belfast/1078084","address":"17 Raby Street, Belfast, BT7 2GY","price":225000,"postcode":"BT7 2GY","numBedrooms":2,"numBathrooms":1,"tenure":"Leasehold","style":"Mid-terrace House","agency":"Michael Chandler Estate Agents (Belfast)","latitude":54.5761204,"longitude":-5.916541700000001,"firstSeen":"2026-05-20","lastSeen":"2026-05-21","isNew":false,"repayments":{"4.5":{"25":1125.56,"30":1026.04,"35":958.34},"5.0":{"25":1183.79,"30":1087.06,"35":1021.99},"5.5":{"25":1243.53,"30":1149.77,"35":1087.46}}},{"href":"https://www.propertypal.com/51-candahar-street-belfast/1061982","address":"51 Candahar Street, Belfast, BT7 3AR","price":235000,"postcode":"BT7 3AR","numBedrooms":5,"numBathrooms":1,"tenure":"Not Provided","style":"Mid-terrace House","agency":"Fetherstons (South Belfast Office)","latitude":54.5793,"longitude":-5.92372,"firstSeen":"2026-05-20","lastSeen":"2026-05-21","isNew":false,"repayments":{"4.5":{"25":1175.59,"30":1071.64,"35":1000.94},"5.0":{"25":1236.41,"30":1135.38,"35":1067.41},"5.5":{"25":1298.8,"30":1200.87,"35":1135.79}}}];
+
+    // Current State
+    let activeFilter = 'all';
+    let searchQuery = '';
+    let activeView = 'grid';
+    
+    // Global Modeler Settings
+    let modelerMode = 'deposit'; // 'deposit' or 'ltv'
+    let globalDeposit = 20000;   // In £
+    let activeLTV = 90;          // In %
+    let activeRate = 5.0;        // In %
+    
+    // Overridden Property-Specific Financing
+    // Key: href, Value: { deposit: Number, ltv: Number, rate: Number, active: Boolean }
+    const customFinancing = {};
+
+    let map = null;
+    let markersLayer = null;
+
+    // Amortized monthly repayment calculator
+    function calculateMonthlyRepayment(price, ltvPercent, annualRate, years) {
+      const principal = price * (ltvPercent / 100);
+      const r = (annualRate / 100) / 12;
+      const n = years * 12;
+
+      if (r === 0) return principal / n;
+      const payment = principal * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+      return Math.round(payment * 100) / 100;
+    }
+
+    // Calculate days since a property was first seen
+    function getDaysSinceListed(firstSeenStr) {
+      const firstSeen = new Date(firstSeenStr);
+      const today = new Date('2026-05-21');
+      firstSeen.setHours(0, 0, 0, 0);
+      today.setHours(0, 0, 0, 0);
+      const diffTime = today - firstSeen;
+      return Math.round(diffTime / (1000 * 60 * 60 * 24));
+    }
+
+    function getDaysText(firstSeenStr) {
+      const days = getDaysSinceListed(firstSeenStr);
+      if (days === 0) return 'New today';
+      if (days === 1) return '1 day ago';
+      return days + ' days ago';
+    }
+
+    // Retrieve active financial model for a specific property
+    function getPropertyFinancing(p) {
+      // 1. Check if user set custom values for this listing
+      if (customFinancing[p.href] && customFinancing[p.href].active) {
+        const custom = customFinancing[p.href];
+        const deposit = custom.deposit;
+        const ltv = custom.ltv;
+        const rate = custom.rate;
+        const loanAmount = p.price - deposit;
+        const warning = (deposit < p.price * 0.05) 
+          ? '⚠️ Deposit below minimum (5% = £' + Math.round(p.price * 0.05).toLocaleString() + ' required)' 
+          : '';
+        
+        return {
+          deposit: deposit,
+          ltv: ltv,
+          rate: rate,
+          loanAmount: loanAmount,
+          warning: warning,
+          rep25: calculateMonthlyRepayment(p.price, ltv, rate, 25),
+          rep30: calculateMonthlyRepayment(p.price, ltv, rate, 30),
+          rep35: calculateMonthlyRepayment(p.price, ltv, rate, 35)
+        };
+      }
+
+      // 2. Otherwise, use global modeler settings
+      let deposit, ltv, warning = '';
+      if (modelerMode === 'deposit') {
+        deposit = globalDeposit;
+        if (deposit > p.price) {
+          deposit = p.price;
+        }
+        ltv = 100 * (1 - deposit / p.price);
+        
+        // 5% minimum deposit check
+        if (deposit < p.price * 0.05) {
+          warning = '⚠️ Deposit below minimum (5% = £' + Math.round(p.price * 0.05).toLocaleString() + ' required)';
+        }
+      } else {
+        ltv = activeLTV;
+        deposit = p.price * (1 - ltv / 100);
+      }
+
+      const loanAmount = p.price - deposit;
+
+      return {
+        deposit: Math.round(deposit),
+        ltv: Math.round(ltv * 10) / 10,
+        rate: activeRate,
+        loanAmount: Math.round(loanAmount),
+        warning: warning,
+        rep25: calculateMonthlyRepayment(p.price, ltv, activeRate, 25),
+        rep30: calculateMonthlyRepayment(p.price, ltv, activeRate, 30),
+        rep35: calculateMonthlyRepayment(p.price, ltv, activeRate, 35)
+      };
+    }
+
+    // Global Controls Event Handlers
+    function setModelerMode(mode) {
+      modelerMode = mode;
+      
+      const btnDep = document.getElementById('btn-mode-deposit');
+      const btnLtv = document.getElementById('btn-mode-ltv');
+      const ctrlDep = document.getElementById('control-deposit');
+      const ctrlLtv = document.getElementById('control-ltv');
+      
+      if (mode === 'deposit') {
+        btnDep.classList.add('active');
+        btnLtv.classList.remove('active');
+        ctrlDep.style.opacity = '1';
+        ctrlDep.style.pointerEvents = 'auto';
+        ctrlLtv.style.opacity = '0.4';
+        ctrlLtv.style.pointerEvents = 'none';
+      } else {
+        btnDep.classList.remove('active');
+        btnLtv.classList.add('active');
+        ctrlDep.style.opacity = '0.4';
+        ctrlDep.style.pointerEvents = 'none';
+        ctrlLtv.style.opacity = '1';
+        ctrlLtv.style.pointerEvents = 'auto';
+      }
+      
+      renderListings();
+      if (map) renderMapMarkers();
+    }
+
+    function handleGlobalDepositChange(val) {
+      globalDeposit = parseFloat(val) || 20000;
+      document.getElementById('val-global-deposit').innerText = '£' + globalDeposit.toLocaleString();
+      renderListings();
+      if (map) renderMapMarkers();
+    }
+
+    function handleGlobalLTVChange(val) {
+      activeLTV = parseFloat(val) || 90;
+      document.getElementById('val-global-ltv').innerHTML = activeLTV + '% LTV <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal;">(' + (100 - activeLTV) + '% Dep)</span>';
+      renderListings();
+      if (map) renderMapMarkers();
+    }
+
+    function handleGlobalRateChange(val) {
+      activeRate = parseFloat(val) || 5.0;
+      document.getElementById('val-global-rate').innerText = activeRate.toFixed(2) + '%';
+      renderListings();
+      if (map) renderMapMarkers();
+    }
+
+    // Property-Specific Calculator Handlers
+    function toggleCardCalculator(url, event) {
+      if (event) event.stopPropagation();
+      const safeId = url.replace(/[^a-zA-Z0-9]/g, '');
+      const calcEl = document.getElementById('calc-' + safeId);
+      if (!calcEl) return;
+      
+      const isExpanded = calcEl.style.display === 'flex';
+      calcEl.style.display = isExpanded ? 'none' : 'flex';
+    }
+
+    // Unified Affordability Core Calculations & Synchronizers
+    function handleDepositChange(url, depositVal, price, source) {
+      const parsedDep = Math.max(0, Math.min(price, parseFloat(depositVal) || 0));
+      const calculatedLtv = 100 * (1 - parsedDep / price);
+      
+      if (!customFinancing[url]) {
+        customFinancing[url] = { rate: activeRate };
+      }
+      customFinancing[url].active = true;
+      customFinancing[url].deposit = parsedDep;
+      customFinancing[url].ltv = Math.round(calculatedLtv * 10) / 10;
+      
+      const safeId = url.replace(/[^a-zA-Z0-9]/g, '');
+      
+      // Update Card inputs
+      const cardInputEl = document.getElementById('input-dep-' + safeId);
+      const cardSliderEl = document.getElementById('slider-dep-' + safeId);
+      const cardLtvSliderEl = document.getElementById('slider-ltv-' + safeId);
+      const cardLtvLabelEl = document.getElementById('lbl-ltv-' + safeId);
+      
+      if (cardInputEl && cardInputEl.value != parsedDep) cardInputEl.value = parsedDep;
+      if (cardSliderEl && cardSliderEl.value != parsedDep) cardSliderEl.value = parsedDep;
+      if (cardLtvSliderEl) cardLtvSliderEl.value = Math.max(50, Math.min(95, customFinancing[url].ltv));
+      if (cardLtvLabelEl) cardLtvLabelEl.innerText = Math.round(customFinancing[url].ltv * 10) / 10;
+      
+      // Update Popup inputs
+      const popupInputEl = document.getElementById('popup-input-dep-' + safeId);
+      const popupSliderEl = document.getElementById('popup-slider-dep-' + safeId);
+      const popupLtvSliderEl = document.getElementById('popup-slider-ltv-' + safeId);
+      const popupLtvLabelEl = document.getElementById('popup-lbl-ltv-' + safeId);
+      
+      if (popupInputEl && popupInputEl.value != parsedDep) popupInputEl.value = parsedDep;
+      if (popupSliderEl && popupSliderEl.value != parsedDep) popupSliderEl.value = parsedDep;
+      if (popupLtvSliderEl) popupLtvSliderEl.value = Math.max(50, Math.min(95, customFinancing[url].ltv));
+      if (popupLtvLabelEl) popupLtvLabelEl.innerText = Math.round(customFinancing[url].ltv * 10) / 10;
+      
+      updateCardUi(url);
+      updatePopupUi(url);
+    }
+
+    function handleLTVChange(url, ltvVal, price, source) {
+      const parsedLtv = parseFloat(ltvVal) || 90;
+      const calculatedDep = price * (1 - parsedLtv / 100);
+      
+      if (!customFinancing[url]) {
+        customFinancing[url] = { rate: activeRate };
+      }
+      customFinancing[url].active = true;
+      customFinancing[url].ltv = parsedLtv;
+      customFinancing[url].deposit = Math.round(calculatedDep);
+      
+      const safeId = url.replace(/[^a-zA-Z0-9]/g, '');
+      
+      // Update Card inputs
+      const cardInputEl = document.getElementById('input-dep-' + safeId);
+      const cardSliderEl = document.getElementById('slider-dep-' + safeId);
+      const cardLtvLabelEl = document.getElementById('lbl-ltv-' + safeId);
+      const cardLtvSliderEl = document.getElementById('slider-ltv-' + safeId);
+      
+      if (cardInputEl) cardInputEl.value = customFinancing[url].deposit;
+      if (cardSliderEl) cardSliderEl.value = customFinancing[url].deposit;
+      if (cardLtvLabelEl) cardLtvLabelEl.innerText = parsedLtv;
+      if (cardLtvSliderEl) cardLtvSliderEl.value = parsedLtv;
+      
+      // Update Popup inputs
+      const popupInputEl = document.getElementById('popup-input-dep-' + safeId);
+      const popupSliderEl = document.getElementById('popup-slider-dep-' + safeId);
+      const popupLtvLabelEl = document.getElementById('popup-lbl-ltv-' + safeId);
+      const popupLtvSliderEl = document.getElementById('popup-slider-ltv-' + safeId);
+      
+      if (popupInputEl) popupInputEl.value = customFinancing[url].deposit;
+      if (popupSliderEl) popupSliderEl.value = customFinancing[url].deposit;
+      if (popupLtvLabelEl) popupLtvLabelEl.innerText = parsedLtv;
+      if (popupLtvSliderEl) popupLtvSliderEl.value = parsedLtv;
+      
+      updateCardUi(url);
+      updatePopupUi(url);
+    }
+
+    function handleRateChange(url, rateVal, price, source) {
+      const parsedRate = parseFloat(rateVal) || 5.0;
+      
+      if (!customFinancing[url]) {
+        const p = rawProperties.find(x => x.href === url);
+        const fin = getPropertyFinancing(p);
+        customFinancing[url] = { deposit: fin.deposit, ltv: fin.ltv };
+      }
+      customFinancing[url].active = true;
+      customFinancing[url].rate = parsedRate;
+      
+      const safeId = url.replace(/[^a-zA-Z0-9]/g, '');
+      
+      // Update Card inputs
+      const cardRateLabelEl = document.getElementById('lbl-rate-' + safeId);
+      const cardRateSliderEl = document.getElementById('slider-rate-' + safeId);
+      if (cardRateLabelEl) cardRateLabelEl.innerText = parsedRate.toFixed(2);
+      if (cardRateSliderEl) cardRateSliderEl.value = parsedRate;
+      
+      // Update Popup inputs
+      const popupRateLabelEl = document.getElementById('popup-lbl-rate-' + safeId);
+      const popupRateSliderEl = document.getElementById('popup-slider-rate-' + safeId);
+      if (popupRateLabelEl) popupRateLabelEl.innerText = parsedRate.toFixed(2);
+      if (popupRateSliderEl) popupRateSliderEl.value = parsedRate;
+      
+      updateCardUi(url);
+      updatePopupUi(url);
+    }
+
+    function resetCalculator(url, event) {
+      if (event) event.stopPropagation();
+      if (customFinancing[url]) {
+        customFinancing[url].active = false;
+      }
+      
+      const safeId = url.replace(/[^a-zA-Z0-9]/g, '');
+      const p = rawProperties.find(x => x.href === url);
+      const fin = getPropertyFinancing(p);
+      
+      // Reset Card Inputs
+      const cardInputEl = document.getElementById('input-dep-' + safeId);
+      const cardSliderEl = document.getElementById('slider-dep-' + safeId);
+      const cardLtvSliderEl = document.getElementById('slider-ltv-' + safeId);
+      const cardLtvLabelEl = document.getElementById('lbl-ltv-' + safeId);
+      const cardRateSliderEl = document.getElementById('slider-rate-' + safeId);
+      const cardRateLabelEl = document.getElementById('lbl-rate-' + safeId);
+      
+      if (cardInputEl) cardInputEl.value = fin.deposit;
+      if (cardSliderEl) cardSliderEl.value = fin.deposit;
+      if (cardLtvSliderEl) cardLtvSliderEl.value = fin.ltv;
+      if (cardLtvLabelEl) cardLtvLabelEl.innerText = fin.ltv;
+      if (cardRateSliderEl) cardRateSliderEl.value = fin.rate;
+      if (cardRateLabelEl) cardRateLabelEl.innerText = fin.rate.toFixed(2);
+      
+      // Reset Popup Inputs
+      const popupInputEl = document.getElementById('popup-input-dep-' + safeId);
+      const popupSliderEl = document.getElementById('popup-slider-dep-' + safeId);
+      const popupLtvSliderEl = document.getElementById('popup-slider-ltv-' + safeId);
+      const popupLtvLabelEl = document.getElementById('popup-lbl-ltv-' + safeId);
+      const popupRateSliderEl = document.getElementById('popup-slider-rate-' + safeId);
+      const popupRateLabelEl = document.getElementById('popup-lbl-rate-' + safeId);
+      
+      if (popupInputEl) popupInputEl.value = fin.deposit;
+      if (popupSliderEl) popupSliderEl.value = fin.deposit;
+      if (popupLtvSliderEl) popupLtvSliderEl.value = fin.ltv;
+      if (popupLtvLabelEl) popupLtvLabelEl.innerText = fin.ltv;
+      if (popupRateSliderEl) popupRateSliderEl.value = fin.rate;
+      if (popupRateLabelEl) popupRateLabelEl.innerText = fin.rate.toFixed(2);
+      
+      updateCardUi(url);
+      updatePopupUi(url);
+    }
+
+    // Grid Card Shell Handlers (call unified core)
+    function handleCardDepositChange(url, val, price) {
+      handleDepositChange(url, val, price, 'card');
+    }
+    function handleCardLTVChange(url, val, price) {
+      handleLTVChange(url, val, price, 'card');
+    }
+    function handleCardRateChange(url, val, price) {
+      handleRateChange(url, val, price, 'card');
+    }
+    function resetCardCalculator(url, event) {
+      resetCalculator(url, event);
+    }
+
+    // Popup-specific Shell Handlers (call unified core)
+    function handlePopupDepositChange(url, val, price) {
+      handleDepositChange(url, val, price, 'popup');
+    }
+    function handlePopupLTVChange(url, val, price) {
+      handleLTVChange(url, val, price, 'popup');
+    }
+    function handlePopupRateChange(url, val, price) {
+      handleRateChange(url, val, price, 'popup');
+    }
+    function resetPopupCalculator(url, event) {
+      resetCalculator(url, event);
+    }
+
+    function togglePopupCalculator(url, event) {
+      if (event) event.stopPropagation();
+      const safeId = url.replace(/[^a-zA-Z0-9]/g, '');
+      const calcEl = document.getElementById('popup-calc-' + safeId);
+      if (!calcEl) return;
+      
+      const isExpanded = calcEl.style.display === 'flex';
+      calcEl.style.display = isExpanded ? 'none' : 'flex';
+      
+      // Refresh popup dimensions for Leaflet container autoPan
+      const popup = map._popup;
+      if (popup) {
+        popup.update();
+      }
+    }
+
+    function updatePopupUi(url) {
+      const safeId = url.replace(/[^a-zA-Z0-9]/g, '');
+      const popupEl = document.querySelector('.leaflet-popup-content');
+      if (!popupEl) return;
+      
+      const p = rawProperties.find(x => x.href === url);
+      if (!p) return;
+      
+      const fin = getPropertyFinancing(p);
+      
+      const depEl = popupEl.querySelector('.popup-lbl-card-deposit');
+      const ltvPctEl = popupEl.querySelector('.popup-lbl-card-ltv-pct');
+      const rateEl = popupEl.querySelector('.popup-lbl-card-rate');
+      const ltvEl = popupEl.querySelector('.popup-lbl-card-ltv');
+      const rep25El = popupEl.querySelector('.popup-lbl-card-rep25');
+      const rep30El = popupEl.querySelector('.popup-lbl-card-rep30');
+      const rep35El = popupEl.querySelector('.popup-lbl-card-rep35');
+      const warningEl = popupEl.querySelector('.popup-warning-container');
+      
+      if (depEl) depEl.innerText = '£' + fin.deposit.toLocaleString();
+      if (ltvPctEl) ltvPctEl.innerText = '(' + fin.ltv + '% LTV)';
+      if (rateEl) rateEl.innerText = fin.rate.toFixed(2) + '%';
+      if (ltvEl) ltvEl.innerText = fin.ltv + '% LTV';
+      
+      if (rep25El) rep25El.innerText = '£' + fin.rep25.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      if (rep30El) rep30El.innerText = '£' + fin.rep30.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      if (rep35El) rep35El.innerText = '£' + fin.rep35.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      
+      if (warningEl) {
+        warningEl.innerHTML = fin.warning ? '<div class="affordability-warning">' + fin.warning + '</div>' : '';
+      }
+    }
+
+    // Smooth partial card DOM updates
+    function updateCardUi(url) {
+      const safeId = url.replace(/[^a-zA-Z0-9]/g, '');
+      const cardEl = document.getElementById('card-' + safeId);
+      if (!cardEl) return;
+      
+      const p = rawProperties.find(x => x.href === url);
+      if (!p) return;
+      
+      const fin = getPropertyFinancing(p);
+      
+      const depEl = cardEl.querySelector('.lbl-card-deposit');
+      const ltvPctEl = cardEl.querySelector('.lbl-card-ltv-pct');
+      const loanEl = cardEl.querySelector('.lbl-card-loan');
+      const rateEl = cardEl.querySelector('.lbl-card-rate');
+      const ltvEl = cardEl.querySelector('.lbl-card-ltv');
+      const rep25El = cardEl.querySelector('.lbl-card-rep25');
+      const rep30El = cardEl.querySelector('.lbl-card-rep30');
+      const rep35El = cardEl.querySelector('.lbl-card-rep35');
+      const warningEl = cardEl.querySelector('.card-warning-container');
+      
+      if (depEl) depEl.innerText = '£' + fin.deposit.toLocaleString();
+      if (ltvPctEl) ltvPctEl.innerText = '(' + fin.ltv + '% LTV)';
+      if (loanEl) loanEl.innerText = '£' + fin.loanAmount.toLocaleString();
+      if (rateEl) rateEl.innerText = fin.rate.toFixed(2) + '%';
+      if (ltvEl) ltvEl.innerText = fin.ltv + '% LTV';
+      
+      if (rep25El) rep25El.innerText = '£' + fin.rep25.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      if (rep30El) rep30El.innerText = '£' + fin.rep30.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      if (rep35El) rep35El.innerText = '£' + fin.rep35.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      
+      if (warningEl) {
+        warningEl.innerHTML = fin.warning ? '<div class="affordability-warning">' + fin.warning + '</div>' : '';
+      }
+    }
+
+    // Handle search input filtering
+    function handleSearch(query) {
+      searchQuery = query.toLowerCase().trim();
+      renderListings();
+    }
+
+    // Set Active Filter Tab
+    function setFilter(filter, btn) {
+      activeFilter = filter;
+
+      const tabs = btn.parentElement.querySelectorAll('.tab-btn');
+      tabs.forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+
+      renderListings();
+    }
+
+    // Set View Mode (Grid vs Map)
+    function setViewMode(mode) {
+      activeView = mode;
+      
+      const gridBtn = document.getElementById('btn-grid');
+      const mapBtn = document.getElementById('btn-map');
+      const gridEl = document.getElementById('properties-list');
+      const mapEl = document.getElementById('map-container');
+      
+      if (mode === 'grid') {
+        gridBtn.classList.add('active');
+        mapBtn.classList.remove('active');
+        gridEl.style.display = 'grid';
+        mapEl.style.display = 'none';
+      } else {
+        gridBtn.classList.remove('active');
+        mapBtn.classList.add('active');
+        gridEl.style.display = 'none';
+        mapEl.style.display = 'block';
+        
+        if (!map) {
+          initMap();
+        }
+        
+        setTimeout(() => {
+          if (map) {
+            map.invalidateSize();
+          }
+        }, 100);
+      }
+    }
+
+    // Get filtered list of properties
+    function getFilteredProperties() {
+      return rawProperties.filter(p => {
+        const isTerraced = p.style.toLowerCase().includes('terrace') || p.style.toLowerCase().includes('townhouse');
+        const isFreehold = p.tenure.toLowerCase().includes('freehold');
+        const has2Baths = p.numBathrooms >= 2;
+        const isPriority = isTerraced && isFreehold && has2Baths;
+
+        if (activeFilter === 'priority' && !isPriority) return false;
+        if (activeFilter === 'new' && !p.isNew) return false;
+        if (activeFilter === 'freehold' && !isFreehold) return false;
+
+        if (searchQuery) {
+          const matchAddress = p.address.toLowerCase().includes(searchQuery);
+          const matchPostcode = p.postcode.toLowerCase().includes(searchQuery);
+          const matchAgency = p.agency.toLowerCase().includes(searchQuery);
+          const matchStyle = p.style.toLowerCase().includes(searchQuery);
+          if (!matchAddress && !matchPostcode && !matchAgency && !matchStyle) return false;
+        }
+
+        return true;
+      });
+    }
+
+    // Initialize Leaflet Map
+    function initMap() {
+      map = L.map('map-container').setView([54.5973, -5.9301], 13);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
+      }).addTo(map);
+
+      markersLayer = L.layerGroup().addTo(map);
+      renderMapMarkers();
+    }
+
+    // Draw markers on map based on current filter state
+    function renderMapMarkers() {
+      if (!map || !markersLayer) return;
+
+      markersLayer.clearLayers();
+      const filtered = getFilteredProperties();
+      const bounds = [];
+
+      filtered.forEach(p => {
+        if (p.latitude === undefined || p.latitude === null || p.longitude === undefined || p.longitude === null) {
+          return;
+        }
+
+        const lat = parseFloat(p.latitude);
+        const lng = parseFloat(p.longitude);
+        bounds.push([lat, lng]);
+
+        const isTerraced = p.style.toLowerCase().includes('terrace') || p.style.toLowerCase().includes('townhouse');
+        const isFreehold = p.tenure.toLowerCase().includes('freehold');
+        const has2Baths = p.numBathrooms >= 2;
+        const isPriority = isTerraced && isFreehold && has2Baths;
+
+        let pinClass = 'pin-standard';
+        if (isPriority) {
+          pinClass = 'pin-priority';
+        } else if (p.isNew) {
+          pinClass = 'pin-new';
+        }
+
+        const customIcon = L.divIcon({
+          className: 'custom-marker',
+          html: '<div class="marker-pin ' + pinClass + '"></div>',
+          iconSize: [24, 24],
+          iconAnchor: [12, 12],
+          popupAnchor: [0, -12]
+        });
+
+        let badges = '';
+        if (isPriority) badges += '<span class="popup-spec-pill priority-pill">🔥 High Priority</span>';
+        if (p.isNew) badges += '<span class="popup-spec-pill highlight" style="color: var(--success-text); border-color: rgba(34,197,94,0.3); background: var(--success-glow);">🟢 New</span>';
+
+        const fin = getPropertyFinancing(p);
+        const rep25 = fin.rep25.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        const rep30 = fin.rep30.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        const rep35 = fin.rep35.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+        const popupHtml = `
+          <div class="popup-card">
+            <div class="popup-header">
+              <div style="display: flex; gap: 0.3rem; margin-bottom: 0.2rem;">${badges}</div>
+              <div class="popup-price">£${p.price.toLocaleString()}</div>
+              <div class="popup-address" title="${p.address}">${p.address}</div>
+            </div>
+            
+            <div class="popup-specs">
+              <span class="popup-spec-pill">${p.numBedrooms} Bed</span>
+              <span class="popup-spec-pill ${has2Baths ? 'highlight' : ''}">${p.numBathrooms} Bath</span>
+              <span class="popup-spec-pill ${isFreehold ? 'highlight' : ''}">${p.tenure}</span>
+              <span class="popup-spec-pill">${p.style}</span>
+            </div>
+            
+            <div class="popup-meta">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Commute: ${p.postcode} (&le; 30m)
+            </div>
+            <div class="popup-meta" style="margin-top: -0.2rem;">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Agency: ${p.agency}
+            </div>
+            <div class="popup-meta" style="margin-top: -0.2rem; color: var(--text-secondary);">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:0.2rem; color: var(--accent-indigo);"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Listed: <strong>${p.firstSeen}</strong> (${getDaysText(p.firstSeen)})
+            </div>
+            <div class="popup-meta" style="margin-top: 0.2rem; color: var(--accent-cyan);">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:0.2rem;"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="12" cy="12" r="2"/></svg>
+              Deposit: <strong class="popup-lbl-card-deposit" style="color: var(--accent-cyan);">£${fin.deposit.toLocaleString()}</strong> <span class="popup-lbl-card-ltv-pct" style="color: var(--text-muted);">(${fin.ltv}% LTV)</span>
+            </div>
+            
+            <div class="popup-warning-container">
+              ${fin.warning ? '<div class="affordability-warning">' + fin.warning + '</div>' : ''}
+            </div>
+            
+            <div class="popup-mortgage">
+              <div class="popup-mortgage-title">
+                <span>Repayments at <strong class="popup-lbl-card-rate">${fin.rate.toFixed(2)}%</strong></span>
+                <span class="popup-lbl-card-ltv" style="color: var(--accent-cyan); font-weight:700;">${fin.ltv}% LTV</span>
+              </div>
+              <div class="popup-repayment-grid">
+                <div class="popup-repayment-item">
+                  <div class="popup-repayment-term">25 Yrs</div>
+                  <div class="popup-repayment-val popup-lbl-card-rep25">£${rep25}</div>
+                </div>
+                <div class="popup-repayment-item">
+                  <div class="popup-repayment-term">30 Yrs</div>
+                  <div class="popup-repayment-val popup-lbl-card-rep30">£${rep30}</div>
+                </div>
+                <div class="popup-repayment-item">
+                  <div class="popup-repayment-val popup-lbl-card-rep35">£${rep35}</div>
+                </div>
+              </div>
+            </div>
+            
+            <a href="${p.href}" target="_blank" class="popup-btn">
+              View PropertyPal
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <div class="popup-links-row">
+              <a class="popup-map-link" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.address)}" target="_blank">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.2rem;"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+                Directions
+              </a>
+            </div>
+            
+            <button class="customize-toggle-btn" onclick="togglePopupCalculator('\${p.href}', event)">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:0.2rem;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              Customize Financing
+            </button>
+            
+            <div class="card-calculator" id="popup-calc-\${safeId}" style="display: none;">
+              <div class="calc-row">
+                <div class="calc-header">
+                  <span>Custom Deposit</span>
+                  <div class="calc-input-box">
+                    <span>£</span>
+                    <input type="number" id="popup-input-dep-\${safeId}" value="\${fin.deposit}" oninput="handlePopupDepositChange('\${p.href}', this.value, \${p.price})" onmousedown="event.stopPropagation()" onpointerdown="event.stopPropagation()">
+                  </div>
+                </div>
+                <input type="range" class="custom-slider" id="popup-slider-dep-\${safeId}" min="0" max="\${p.price}" step="500" value="\${fin.deposit}" oninput="handlePopupDepositChange('\${p.href}', this.value, \${p.price})" onmousedown="event.stopPropagation()" onpointerdown="event.stopPropagation()">
+              </div>
+              
+              <div class="calc-row">
+                <div class="calc-header">
+                  <span>Custom LTV</span>
+                  <span class="calc-val"><span id="popup-lbl-ltv-\${safeId}">\${fin.ltv}</span>% LTV</span>
+                </div>
+                <input type="range" class="custom-slider" id="popup-slider-ltv-\${safeId}" min="50" max="95" step="1" value="\${fin.ltv}" oninput="handlePopupLTVChange('\${p.href}', this.value, \${p.price})" onmousedown="event.stopPropagation()" onpointerdown="event.stopPropagation()">
+              </div>
+
+              <div class="calc-row">
+                <div class="calc-header">
+                  <span>Custom Interest Rate</span>
+                  <span class="calc-val"><span id="popup-lbl-rate-\${safeId}">\${fin.rate.toFixed(2)}</span>%</span>
+                </div>
+                <input type="range" class="custom-slider" id="popup-slider-rate-\${safeId}" min="1.0" max="10.0" step="0.05" value="\${fin.rate}" oninput="handlePopupRateChange('\${p.href}', this.value, \${p.price})" onmousedown="event.stopPropagation()" onpointerdown="event.stopPropagation()">
+              </div>
+              
+              <button class="customize-toggle-btn" style="border-style: solid; border-color: rgba(239, 68, 68, 0.2); color: hsl(0, 85%, 65%); margin-top: 0.5rem;" onclick="resetPopupCalculator('\${p.href}', event)">
+                Reset to Global Modeler
+              </button>
+            </div>
+          </div>
+        `;
+
+        const marker = L.marker([lat, lng], { icon: customIcon }).bindPopup(popupHtml);
+        markersLayer.addLayer(marker);
+      });
+
+      if (bounds.length > 0) {
+        map.fitBounds(bounds, { padding: [40, 40], maxZoom: 15 });
+      }
+    }
+
+    // Render properties matching active tab & rate
+    function renderListings() {
+      const container = document.getElementById('properties-list');
+      container.innerHTML = '';
+
+      const filtered = getFilteredProperties();
+
+      if (map) {
+        renderMapMarkers();
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = '           <div class="empty-state">             <h3>No Properties Found</h3>             <p>Try switching to another filter or check back later.</p>           </div>         ';
+        return;
+      }
+
+      filtered.forEach(p => {
+        const isTerraced = p.style.toLowerCase().includes('terrace') || p.style.toLowerCase().includes('townhouse');
+        const isFreehold = p.tenure.toLowerCase().includes('freehold');
+        const has2Baths = p.numBathrooms >= 2;
+        const isPriority = isTerraced && isFreehold && has2Baths;
+
+        let badges = '';
+        if (isPriority) badges += '<span class="badge badge-priority">🔥 High Priority</span>';
+        if (p.isNew) badges += '<span class="badge badge-new">🟢 New</span>';
+
+        const fin = getPropertyFinancing(p);
+        const rep25 = fin.rep25.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        const rep30 = fin.rep30.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        const rep35 = fin.rep35.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        const safeId = p.href.replace(/[^a-zA-Z0-9]/g, '');
+
+        const cardHtml = `
+          <div class="property-card" id="card-${safeId}">
+            <div>
+              <div class="card-badges">${badges}</div>
+              <div class="card-price">£${p.price.toLocaleString()}</div>
+              <div class="card-address-container">
+                <div class="card-address" title="${p.address}">${p.address}</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.address)}" target="_blank" title="View on Google Maps">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+                  Map Location
+                </a>
+              </div>
+              
+              <div class="card-specs-row">
+                <span class="spec-pill">${p.numBedrooms} Bed</span>
+                <span class="spec-pill ${has2Baths ? 'highlight' : ''}">${p.numBathrooms} Bath</span>
+                <span class="spec-pill ${isFreehold ? 'highlight' : ''}">${p.tenure}</span>
+                <span class="spec-pill">${p.style}</span>
+              </div>
+
+              <div class="card-agency">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Commute: ${p.postcode} (&le; 30m)
+              </div>
+              <div class="card-agency" style="margin-top: -1rem;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Agency: ${p.agency}
+              </div>
+
+              <div class="card-agency" style="margin-top: -1rem; color: var(--text-secondary);">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-indigo);"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Listed: <strong style="margin-left:0.2rem; color: var(--text-primary);">${p.firstSeen}</strong> <span style="font-size:0.75rem; color:var(--text-muted); margin-left:0.3rem;">(${getDaysText(p.firstSeen)})</span>
+              </div>
+
+              <div class="card-agency" style="margin-top: -1rem; color: var(--text-secondary);">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/></svg>
+                Deposit: <strong class="lbl-card-deposit" style="margin-left:0.2rem; color:var(--accent-cyan);">£${fin.deposit.toLocaleString()}</strong> <span class="lbl-card-ltv-pct" style="font-size:0.75rem; color:var(--text-muted); margin-left:0.3rem;">(${fin.ltv}% LTV)</span>
+              </div>
+              <div class="card-agency" style="margin-top: -1rem; color: var(--text-secondary);">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                Loan Amount: <strong class="lbl-card-loan" style="margin-left:0.2rem; color:var(--text-primary);">£${fin.loanAmount.toLocaleString()}</strong>
+              </div>
+
+              <div class="card-warning-container">
+                ${fin.warning ? '<div class="affordability-warning">' + fin.warning + '</div>' : ''}
+              </div>
+            </div>
+
+            <div>
+              <div class="mortgage-panel">
+                <div class="mortgage-panel-title">
+                  <span>Repayments at <strong class="lbl-card-rate">${fin.rate.toFixed(2)}%</strong></span>
+                  <span class="mortgage-ltv-badge lbl-card-ltv">${fin.ltv}% LTV</span>
+                </div>
+                <div class="repayment-grid">
+                  <div class="repayment-item">
+                    <div class="repayment-term">25 Yrs</div>
+                    <div class="repayment-value lbl-card-rep25">£${rep25}</div>
+                  </div>
+                  <div class="repayment-item">
+                    <div class="repayment-term">30 Yrs</div>
+                    <div class="repayment-value lbl-card-rep30">£${rep30}</div>
+                  </div>
+                  <div class="repayment-item">
+                    <div class="repayment-term">35 Yrs</div>
+                    <div class="repayment-value lbl-card-rep35">£${rep35}</div>
+                  </div>
+                </div>
+              </div>
+
+              <a href="${p.href}" target="_blank" class="card-btn">
+                View PropertyPal
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+
+              <button class="customize-toggle-btn" onclick="toggleCardCalculator('${p.href}', event)">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:0.2rem;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                Customize Financing
+              </button>
+              
+              <div class="card-calculator" id="calc-${safeId}">
+                <div class="calc-row">
+                  <div class="calc-header">
+                    <span>Custom Deposit</span>
+                    <div class="calc-input-box">
+                      <span>£</span>
+                      <input type="number" id="input-dep-${safeId}" value="${fin.deposit}" oninput="handleCardDepositChange('${p.href}', this.value, ${p.price})">
+                    </div>
+                  </div>
+                  <input type="range" class="custom-slider" id="slider-dep-${safeId}" min="0" max="${p.price}" step="500" value="${fin.deposit}" oninput="handleCardDepositChange('${p.href}', this.value, ${p.price})">
+                </div>
+                
+                <div class="calc-row">
+                  <div class="calc-header">
+                    <span>Custom LTV</span>
+                    <span class="calc-val"><span id="lbl-ltv-${safeId}">${fin.ltv}</span>% LTV</span>
+                  </div>
+                  <input type="range" class="custom-slider" id="slider-ltv-${safeId}" min="50" max="95" step="1" value="${fin.ltv}" oninput="handleCardLTVChange('${p.href}', this.value, ${p.price})">
+                </div>
+
+                <div class="calc-row">
+                  <div class="calc-header">
+                    <span>Custom Interest Rate</span>
+                    <span class="calc-val"><span id="lbl-rate-${safeId}">${fin.rate.toFixed(2)}</span>%</span>
+                  </div>
+                  <input type="range" class="custom-slider" id="slider-rate-${safeId}" min="1.0" max="10.0" step="0.05" value="${fin.rate}" oninput="handleCardRateChange('${p.href}', this.value, ${p.price})">
+                </div>
+                
+                <button class="customize-toggle-btn" style="border-style: solid; border-color: rgba(239, 68, 68, 0.2); color: hsl(0, 85%, 65%); margin-top: 0.5rem;" onclick="resetCardCalculator('${p.href}', event)">
+                  Reset to Global Modeler
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        container.insertAdjacentHTML('beforeend', cardHtml);
+      });
+    }
+
+    // Initial load
+    renderListings();
+  </script>
+</body>
+</html>
+
