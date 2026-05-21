@@ -394,10 +394,10 @@ async function run() {
   console.log(`- High Priority Candidates (Freehold + 2+ Baths): ${highPriorityList.length}`);
   console.log(`- Standard Terraced Candidates: ${standardList.length}`);
 
-  // Step 4: Write Outputs (daily_report.md and dashboard.html)
-  console.log('\n--- STEP 4: Generating daily_report.md and dashboard.html ---');
+  // Step 4: Write Outputs (daily_report.md and index.html)
+  console.log('\n--- STEP 4: Generating daily_report.md and index.html ---');
   generateDailyReportMarkdown(allPropertiesList, highPriorityList, todayStr);
-  generateDashboardHtml(allPropertiesList, todayStr);
+  generateindexHtml(allPropertiesList, todayStr);
   
   console.log('\n=== MONITOR PIPELINE EXECUTED SUCCESSFULLY ===');
 }
@@ -488,9 +488,9 @@ function generateDailyReportMarkdown(allProperties, highPriority, todayStr) {
   console.log(`Generated ${filePath}`);
 }
 
-// Sub-generator: dashboard.html
-function generateDashboardHtml(allProperties, todayStr) {
-  const filePath = path.join(__dirname, 'dashboard.html');
+// Sub-generator: index.html
+function generateindexHtml(allProperties, todayStr) {
+  const filePath = path.join(__dirname, 'index.html');
   const avgPrice = allProperties.reduce((sum, item) => sum + item.price, 0) / (allProperties.length || 1);
   const newCount = allProperties.filter(p => p.isNew).length;
   const highPriorityCount = allProperties.filter(p => p.style.toLowerCase().includes('terrace') && p.tenure.toLowerCase().includes('freehold') && p.numBathrooms >= 2).length;
@@ -500,7 +500,7 @@ function generateDashboardHtml(allProperties, todayStr) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Belfast Property Market Dashboard</title>
+  <title>Belfast Property Market index</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
