@@ -33,6 +33,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add properties_history.json daily_report.md dashboard.html
+          git add properties_history.json daily_report.md index.html
           git commit -m "Automated daily property update" || exit 0
           git push
