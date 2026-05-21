@@ -23,6 +23,9 @@ jobs:
       - name: Install dependencies (Rebuilds node_modules)
         run: npm install
         
+      - name: Install Web Browsers for Playwright
+        run: npx playwright install --with-deps
+        
       - name: Run the property tracker
         run: node monitor.js
 
