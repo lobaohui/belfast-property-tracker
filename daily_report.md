@@ -1,4 +1,4 @@
-# Belfast Property Market Report - 2026-07-18
+# Belfast Property Market Report - 2026-07-19
 
 Daily property report for residential terraced houses under **£250,000** in Greater Belfast. Includes 90% LTV monthly mortgage repayments for **25, 30, and 35 years** across **4.5%, 5.0%, and 5.5%** interest rates.
 
@@ -8,7 +8,7 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 | :--- | :--- |
 | **Total Matching Properties** | **84** |
 | **High Priority Candidates (Freehold + 2+ Baths)** | **0** |
-| **New Additions Today** | **4** |
+| **New Additions Today** | **0** |
 | **Average Asking Price** | **£157,931** |
 
 ## 🔥 High Priority Listings (Freehold & 2+ Bathrooms)
@@ -17,79 +17,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ## 🏠 Standard Matching Listings
 
-### 1. 28 Donaldson Crescent, Belfast, BT13 3LQ 🟢 **[NEW ADDITION]**
-- **Asking Price:** £125,000
-- **Agency:** Ulster Property Sales (Cavehill)
-- **Specs:** 2 Bed | 1 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-18 (New today)
-- **Links:** [View on PropertyPal](https://www.propertypal.com/28-donaldson-crescent-belfast/1089907) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=28%20Donaldson%20Crescent%2C%20Belfast%2C%20BT13%203LQ)
-
-#### Monthly Repayment Comparison (90% LTV = £112,500):
-
-| Interest Rate | 25 Years | 30 Years | 35 Years |
-| :--- | :--- | :--- | :--- |
-| **4.5%** | £625.31 | £570.02 | £532.41 |
-| **5.0%** | £657.66 | £603.92 | £567.77 |
-| **5.5%** | £690.85 | £638.76 | £604.14 |
-
----
-
-### 2. 5 Wedderburn Avenue, Finaghy, Belfast, BT10 0FY 🟢 **[NEW ADDITION]**
-- **Asking Price:** £169,950
-- **Agency:** TMC Estate Agents (Finaghy)
-- **Specs:** 3 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-18 (New today)
-- **Links:** [View on PropertyPal](https://www.propertypal.com/5-wedderburn-avenue-finaghy-belfast/1089809) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=5%20Wedderburn%20Avenue%2C%20Finaghy%2C%20Belfast%2C%20BT10%200FY)
-
-#### Monthly Repayment Comparison (90% LTV = £152,955):
-
-| Interest Rate | 25 Years | 30 Years | 35 Years |
-| :--- | :--- | :--- | :--- |
-| **4.5%** | £850.17 | £775 | £723.87 |
-| **5.0%** | £894.16 | £821.1 | £771.95 |
-| **5.5%** | £939.28 | £868.46 | £821.39 |
-
----
-
-### 3. 153 Falls Road, Belfast, BT12 6AF 🟢 **[NEW ADDITION]**
-- **Asking Price:** £174,950
-- **Agency:** Ulster Property Sales (Andersonstown)
-- **Specs:** 4 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-18 (New today)
-- **Links:** [View on PropertyPal](https://www.propertypal.com/153-falls-road-belfast/1089928) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=153%20Falls%20Road%2C%20Belfast%2C%20BT12%206AF)
-
-#### Monthly Repayment Comparison (90% LTV = £157,455):
-
-| Interest Rate | 25 Years | 30 Years | 35 Years |
-| :--- | :--- | :--- | :--- |
-| **4.5%** | £875.19 | £797.8 | £745.17 |
-| **5.0%** | £920.47 | £845.25 | £794.66 |
-| **5.5%** | £966.91 | £894.01 | £845.56 |
-
----
-
-### 4. 87 Ravenhill Gardens, Belfast, BT6 8GQ 🟢 **[NEW ADDITION]**
-- **Asking Price:** £230,000
-- **Agency:** Michael Chandler Estate Agents (Belfast)
-- **Specs:** 3 Bed | 2 Bath | Mid-terrace House | Tenure: Leasehold
-- **Listed Date:** 2026-07-18 (New today)
-- **Links:** [View on PropertyPal](https://www.propertypal.com/87-ravenhill-gardens-belfast/1089939) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=87%20Ravenhill%20Gardens%2C%20Belfast%2C%20BT6%208GQ)
-
-#### Monthly Repayment Comparison (90% LTV = £207,000):
-
-| Interest Rate | 25 Years | 30 Years | 35 Years |
-| :--- | :--- | :--- | :--- |
-| **4.5%** | £1,150.57 | £1,048.84 | £979.64 |
-| **5.0%** | £1,210.1 | £1,111.22 | £1,044.7 |
-| **5.5%** | £1,271.16 | £1,175.32 | £1,111.62 |
-
----
-
-### 5. (Lot 35) 19 Fingal Street, Belfast, BT13 3DY
+### 1. (Lot 35) 19 Fingal Street, Belfast, BT13 3DY
 - **Asking Price:** £59,000
 - **Agency:** BRG Gibson Auctions
 - **Specs:** 2 Bed | 1 Bath | Terrace House | Tenure: Freehold
-- **Listed Date:** 2026-07-09 (9 days ago)
+- **Listed Date:** 2026-07-09 (10 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/lot-35-19-fingal-street-belfast/1088532) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=(Lot%2035)%2019%20Fingal%20Street%2C%20Belfast%2C%20BT13%203DY)
 
 #### Monthly Repayment Comparison (90% LTV = £53,100):
@@ -102,11 +34,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 6. (Lot 1) 22 Orkney Street, Belfast, BT13 3GR
+### 2. (Lot 1) 22 Orkney Street, Belfast, BT13 3GR
 - **Asking Price:** £63,000
 - **Agency:** BRG Gibson Auctions
 - **Specs:** 2 Bed | 1 Bath | Terrace House | Tenure: Freehold
-- **Listed Date:** 2026-06-25 (23 days ago)
+- **Listed Date:** 2026-06-25 (24 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/lot-1-22-orkney-street-belfast/1085087) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=(Lot%201)%2022%20Orkney%20Street%2C%20Belfast%2C%20BT13%203GR)
 
 #### Monthly Repayment Comparison (90% LTV = £56,700):
@@ -119,11 +51,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 7. 45 Parker Street, Belfast, BT5 4HN
+### 3. 45 Parker Street, Belfast, BT5 4HN
 - **Asking Price:** £70,000
 - **Agency:** John Minnis Estate Agents
 - **Specs:** 2 Bed | 1 Bath | End-terrace House | Tenure: Freehold
-- **Listed Date:** 2026-07-01 (17 days ago)
+- **Listed Date:** 2026-07-01 (18 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/45-parker-street-belfast/1086175) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=45%20Parker%20Street%2C%20Belfast%2C%20BT5%204HN)
 
 #### Monthly Repayment Comparison (90% LTV = £63,000):
@@ -136,11 +68,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 8. 6 Foxglove Street, Beersbridge, Belfast, BT5 4SQ
+### 4. 6 Foxglove Street, Beersbridge, Belfast, BT5 4SQ
 - **Asking Price:** £95,000
 - **Agency:** Campbell & Co (Belfast)
 - **Specs:** 2 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-06-26 (22 days ago)
+- **Listed Date:** 2026-06-26 (23 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/6-foxglove-street-beersbridge-belfast/1084946) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=6%20Foxglove%20Street%2C%20Beersbridge%2C%20Belfast%2C%20BT5%204SQ)
 
 #### Monthly Repayment Comparison (90% LTV = £85,500):
@@ -153,11 +85,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 9. 60 Kilburn Street, Belfast, BT12 6JT
+### 5. 60 Kilburn Street, Belfast, BT12 6JT
 - **Asking Price:** £95,000
 - **Agency:** Ulster Property Sales (Lisburn Road)
 - **Specs:** 3 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-06 (12 days ago)
+- **Listed Date:** 2026-07-06 (13 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/60-kilburn-street-belfast/1087815) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=60%20Kilburn%20Street%2C%20Belfast%2C%20BT12%206JT)
 
 #### Monthly Repayment Comparison (90% LTV = £85,500):
@@ -170,11 +102,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 10. 38 Donegall Gardens, Belfast, BT12 6NU
+### 6. 38 Donegall Gardens, Belfast, BT12 6NU
 - **Asking Price:** £99,950
 - **Agency:** Bennett Estate Agents
 - **Specs:** 3 Bed | 1 Bath | Townhouse | Tenure: Not Provided
-- **Listed Date:** 2026-07-10 (8 days ago)
+- **Listed Date:** 2026-07-10 (9 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/38-donegall-gardens-belfast/1088275) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=38%20Donegall%20Gardens%2C%20Belfast%2C%20BT12%206NU)
 
 #### Monthly Repayment Comparison (90% LTV = £89,955):
@@ -187,11 +119,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 11. 4 Beechmount Parade, Belfast, BT12 7LW
+### 7. 4 Beechmount Parade, Belfast, BT12 7LW
 - **Asking Price:** £99,950
 - **Agency:** NorthernProperty.com (Residential)
 - **Specs:** 2 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-11 (7 days ago)
+- **Listed Date:** 2026-07-11 (8 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/4-beechmount-parade-belfast/1088870) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=4%20Beechmount%20Parade%2C%20Belfast%2C%20BT12%207LW)
 
 #### Monthly Repayment Comparison (90% LTV = £89,955):
@@ -204,11 +136,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 12. (Lot 7) 31 Wigton Street, Belfast, BT13 2HR
+### 8. (Lot 7) 31 Wigton Street, Belfast, BT13 2HR
 - **Asking Price:** £100,000
 - **Agency:** BRG Gibson Auctions
 - **Specs:** 2 Bed | 1 Bath | Terrace House | Tenure: Freehold
-- **Listed Date:** 2026-07-10 (8 days ago)
+- **Listed Date:** 2026-07-10 (9 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/lot-7-31-wigton-street-belfast/1088225) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=(Lot%207)%2031%20Wigton%20Street%2C%20Belfast%2C%20BT13%202HR)
 
 #### Monthly Repayment Comparison (90% LTV = £90,000):
@@ -221,11 +153,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 13. 2 Glenwood Green, Dunmurry, Belfast, BT17 0QX
+### 9. 2 Glenwood Green, Dunmurry, Belfast, BT17 0QX
 - **Asking Price:** £105,000
 - **Agency:** Wilsons Auctions (NI)
 - **Specs:** 4 Bed | 1 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-08 (10 days ago)
+- **Listed Date:** 2026-07-08 (11 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/2-glenwood-green-dunmurry-belfast/1088302) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=2%20Glenwood%20Green%2C%20Dunmurry%2C%20Belfast%2C%20BT17%200QX)
 
 #### Monthly Repayment Comparison (90% LTV = £94,500):
@@ -238,11 +170,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 14. 21 Mayflower Street, Belfast, BT5 4SL
+### 10. 21 Mayflower Street, Belfast, BT5 4SL
 - **Asking Price:** £109,950
 - **Agency:** Nest Estate Agents (Ballyclare Office)
 - **Specs:** 2 Bed | 1 Bath | Mid-terrace House | Tenure: Leasehold
-- **Listed Date:** 2026-06-29 (19 days ago)
+- **Listed Date:** 2026-06-29 (20 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/21-mayflower-street-belfast/1060920) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=21%20Mayflower%20Street%2C%20Belfast%2C%20BT5%204SL)
 
 #### Monthly Repayment Comparison (90% LTV = £98,955):
@@ -255,11 +187,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 15. 3 Glencairn Street, Belfast, BT13 3LT
+### 11. 3 Glencairn Street, Belfast, BT13 3LT
 - **Asking Price:** £109,950
 - **Agency:** M&H Property Rentals & Management
 - **Specs:** 3 Bed | 1 Bath | Mid Townhouse | Tenure: Not Provided
-- **Listed Date:** 2026-07-09 (9 days ago)
+- **Listed Date:** 2026-07-09 (10 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/3-glencairn-street-belfast/1088084) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=3%20Glencairn%20Street%2C%20Belfast%2C%20BT13%203LT)
 
 #### Monthly Repayment Comparison (90% LTV = £98,955):
@@ -272,11 +204,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 16. 61 Hornby Street, Belfast, BT5 5JH
+### 12. 61 Hornby Street, Belfast, BT5 5JH
 - **Asking Price:** £110,000
 - **Agency:** Vision Property NI
 - **Specs:** 2 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-10 (8 days ago)
+- **Listed Date:** 2026-07-10 (9 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/61-hornby-street-belfast/1088798) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=61%20Hornby%20Street%2C%20Belfast%2C%20BT5%205JH)
 
 #### Monthly Repayment Comparison (90% LTV = £99,000):
@@ -289,11 +221,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 17. 56 Killowen Street, Woodstock, Belfast, BT6 8NG
+### 13. 56 Killowen Street, Woodstock, Belfast, BT6 8NG
 - **Asking Price:** £119,950
 - **Agency:** Pooler Estate Agents
 - **Specs:** 2 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-06-26 (22 days ago)
+- **Listed Date:** 2026-06-26 (23 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/56-killowen-street-woodstock-belfast/1084938) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=56%20Killowen%20Street%2C%20Woodstock%2C%20Belfast%2C%20BT6%208NG)
 
 #### Monthly Repayment Comparison (90% LTV = £107,955):
@@ -306,11 +238,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 18. 89 Amcomri Street, Belfast, BT12 7ND
+### 14. 89 Amcomri Street, Belfast, BT12 7ND
 - **Asking Price:** £119,950
 - **Agency:** NorthernProperty.com (Residential)
 - **Specs:** 4 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-06-29 (19 days ago)
+- **Listed Date:** 2026-06-29 (20 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/89-amcomri-street-belfast/1085238) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=89%20Amcomri%20Street%2C%20Belfast%2C%20BT12%207ND)
 
 #### Monthly Repayment Comparison (90% LTV = £107,955):
@@ -323,11 +255,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 19. 55 Norglen Parade, Belfast, BT11 8DS
+### 15. 55 Norglen Parade, Belfast, BT11 8DS
 - **Asking Price:** £119,950
 - **Agency:** Property People
 - **Specs:** 4 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-10 (8 days ago)
+- **Listed Date:** 2026-07-10 (9 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/55-norglen-parade-belfast/1088812) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=55%20Norglen%20Parade%2C%20Belfast%2C%20BT11%208DS)
 
 #### Monthly Repayment Comparison (90% LTV = £107,955):
@@ -340,11 +272,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 20. 73 Seaview Drive, Belfast, BT15 3ND
+### 16. 73 Seaview Drive, Belfast, BT15 3ND
 - **Asking Price:** £119,950
 - **Agency:** Ulster Property Sales (Cavehill)
 - **Specs:** 2 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-11 (7 days ago)
+- **Listed Date:** 2026-07-11 (8 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/73-seaview-drive-belfast/1088463) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=73%20Seaview%20Drive%2C%20Belfast%2C%20BT15%203ND)
 
 #### Monthly Repayment Comparison (90% LTV = £107,955):
@@ -357,11 +289,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 21. 46 Stratford Gardens, Belfast, BT14 7NS
+### 17. 46 Stratford Gardens, Belfast, BT14 7NS
 - **Asking Price:** £119,950
 - **Agency:** Ulster Property Sales (Cavehill)
 - **Specs:** 2 Bed | 1 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-16 (2 days ago)
+- **Listed Date:** 2026-07-16 (3 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/46-stratford-gardens-belfast/1088671) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=46%20Stratford%20Gardens%2C%20Belfast%2C%20BT14%207NS)
 
 #### Monthly Repayment Comparison (90% LTV = £107,955):
@@ -374,11 +306,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 22. 23 York Park, Belfast, BT15 3QT
+### 18. 23 York Park, Belfast, BT15 3QT
 - **Asking Price:** £120,000
 - **Agency:** Rea Estates
 - **Specs:** 2 Bed | 1 Bath | Mid-terrace House | Tenure: Freehold
-- **Listed Date:** 2026-07-06 (12 days ago)
+- **Listed Date:** 2026-07-06 (13 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/23-york-park-belfast/1087907) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=23%20York%20Park%2C%20Belfast%2C%20BT15%203QT)
 
 #### Monthly Repayment Comparison (90% LTV = £108,000):
@@ -391,11 +323,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 23. 33 Olympia Street, Belfast, BT12 6NJ
+### 19. 33 Olympia Street, Belfast, BT12 6NJ
 - **Asking Price:** £125,000
 - **Agency:** Cairns & Co
 - **Specs:** 3 Bed | 1 Bath | Mid-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-02 (16 days ago)
+- **Listed Date:** 2026-07-02 (17 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/33-olympia-street-belfast/1086477) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=33%20Olympia%20Street%2C%20Belfast%2C%20BT12%206NJ)
 
 #### Monthly Repayment Comparison (90% LTV = £112,500):
@@ -408,11 +340,28 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 24. 40 Iveagh Drive, Belfast, BT12 6AY
+### 20. 28 Donaldson Crescent, Belfast, BT13 3LQ
+- **Asking Price:** £125,000
+- **Agency:** Ulster Property Sales (Cavehill)
+- **Specs:** 2 Bed | 1 Bath | End-terrace House | Tenure: Not Provided
+- **Listed Date:** 2026-07-18 (1 day ago)
+- **Links:** [View on PropertyPal](https://www.propertypal.com/28-donaldson-crescent-belfast/1089907) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=28%20Donaldson%20Crescent%2C%20Belfast%2C%20BT13%203LQ)
+
+#### Monthly Repayment Comparison (90% LTV = £112,500):
+
+| Interest Rate | 25 Years | 30 Years | 35 Years |
+| :--- | :--- | :--- | :--- |
+| **4.5%** | £625.31 | £570.02 | £532.41 |
+| **5.0%** | £657.66 | £603.92 | £567.77 |
+| **5.5%** | £690.85 | £638.76 | £604.14 |
+
+---
+
+### 21. 40 Iveagh Drive, Belfast, BT12 6AY
 - **Asking Price:** £129,950
 - **Agency:** NorthernProperty.com (Residential)
 - **Specs:** 3 Bed | 1 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-02 (16 days ago)
+- **Listed Date:** 2026-07-02 (17 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/40-iveagh-drive-belfast/1085604) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=40%20Iveagh%20Drive%2C%20Belfast%2C%20BT12%206AY)
 
 #### Monthly Repayment Comparison (90% LTV = £116,955):
@@ -425,11 +374,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 25. 2 Eia Street, Belfast, BT14
+### 22. 2 Eia Street, Belfast, BT14
 - **Asking Price:** £129,950
 - **Agency:** Ulster Property Sales (Cavehill)
 - **Specs:** 5 Bed | 3 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-04 (14 days ago)
+- **Listed Date:** 2026-07-04 (15 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/2-eia-street-belfast/1087718) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=2%20Eia%20Street%2C%20Belfast%2C%20BT14)
 
 #### Monthly Repayment Comparison (90% LTV = £116,955):
@@ -442,11 +391,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 26. 232 Connsbrook Avenue, Belfast, BT4 1JZ
+### 23. 232 Connsbrook Avenue, Belfast, BT4 1JZ
 - **Asking Price:** £129,950
 - **Agency:** Reeds Rains (Ballyhackamore)
 - **Specs:** 3 Bed | 1 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-09 (9 days ago)
+- **Listed Date:** 2026-07-09 (10 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/232-connsbrook-avenue-belfast/1088502) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=232%20Connsbrook%20Avenue%2C%20Belfast%2C%20BT4%201JZ)
 
 #### Monthly Repayment Comparison (90% LTV = £116,955):
@@ -459,11 +408,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 27. 24 Ebor Drive, Belfast, BT12 6NR
+### 24. 24 Ebor Drive, Belfast, BT12 6NR
 - **Asking Price:** £130,000
 - **Agency:** Piney
 - **Specs:** 3 Bed | 1 Bath | Mid-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-02 (16 days ago)
+- **Listed Date:** 2026-07-02 (17 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/24-ebor-drive-belfast/1085616) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=24%20Ebor%20Drive%2C%20Belfast%2C%20BT12%206NR)
 
 #### Monthly Repayment Comparison (90% LTV = £117,000):
@@ -476,11 +425,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 28. 31 Rosebery Road, Belfast, BT6 8JA
+### 25. 31 Rosebery Road, Belfast, BT6 8JA
 - **Asking Price:** £130,000
 - **Agency:** LJ Rentals
 - **Specs:** 2 Bed | 1 Bath | Terrace House | Tenure: Leasehold
-- **Listed Date:** 2026-07-16 (2 days ago)
+- **Listed Date:** 2026-07-16 (3 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/31-rosebery-road-belfast/1088633) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=31%20Rosebery%20Road%2C%20Belfast%2C%20BT6%208JA)
 
 #### Monthly Repayment Comparison (90% LTV = £117,000):
@@ -493,11 +442,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 29. 10 Glenbank Close, Belfast, BT17 0SN
+### 26. 10 Glenbank Close, Belfast, BT17 0SN
 - **Asking Price:** £134,950
 - **Agency:** McGranaghan Estate Agents.com
 - **Specs:** 2 Bed | 1 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-10 (8 days ago)
+- **Listed Date:** 2026-07-10 (9 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/10-glenbank-close-belfast/1088793) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=10%20Glenbank%20Close%2C%20Belfast%2C%20BT17%200SN)
 
 #### Monthly Repayment Comparison (90% LTV = £121,455):
@@ -510,11 +459,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 30. 158 Tates Avenue, Belfast, Belfast, BT12 6ND
+### 27. 158 Tates Avenue, Belfast, Belfast, BT12 6ND
 - **Asking Price:** £139,950
 - **Agency:** Cairns & Co
 - **Specs:** 3 Bed | 1 Bath | Mid-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-06-02 (46 days ago)
+- **Listed Date:** 2026-06-02 (47 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/158-tates-avenue-belfast-belfast/1032432) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=158%20Tates%20Avenue%2C%20Belfast%2C%20Belfast%2C%20BT12%206ND)
 
 #### Monthly Repayment Comparison (90% LTV = £125,955):
@@ -527,11 +476,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 31. 37 Hamill Street, Belfast, BT12 4AA
+### 28. 37 Hamill Street, Belfast, BT12 4AA
 - **Asking Price:** £139,950
 - **Agency:** NorthernProperty.com (Residential)
 - **Specs:** 2 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-07 (11 days ago)
+- **Listed Date:** 2026-07-07 (12 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/37-hamill-street-belfast/1088062) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=37%20Hamill%20Street%2C%20Belfast%2C%20BT12%204AA)
 
 #### Monthly Repayment Comparison (90% LTV = £125,955):
@@ -544,11 +493,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 32. 8 Hugo Street, Falls Road, Belfast, BT12 6ET
+### 29. 8 Hugo Street, Falls Road, Belfast, BT12 6ET
 - **Asking Price:** £139,950
 - **Agency:** Ulster Property Sales (Andersonstown)
 - **Specs:** 3 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-07 (11 days ago)
+- **Listed Date:** 2026-07-07 (12 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/8-hugo-street-falls-road-belfast/1086430) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=8%20Hugo%20Street%2C%20Falls%20Road%2C%20Belfast%2C%20BT12%206ET)
 
 #### Monthly Repayment Comparison (90% LTV = £125,955):
@@ -561,11 +510,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 33. 217 Cregagh Street, Woodstock Road, Belfast, BT6 8NL
+### 30. 217 Cregagh Street, Woodstock Road, Belfast, BT6 8NL
 - **Asking Price:** £139,950
 - **Agency:** Pooler Estate Agents
 - **Specs:** 3 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-17 (1 day ago)
+- **Listed Date:** 2026-07-17 (2 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/217-cregagh-street-woodstock-road-belfast/1089763) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=217%20Cregagh%20Street%2C%20Woodstock%20Road%2C%20Belfast%2C%20BT6%208NL)
 
 #### Monthly Repayment Comparison (90% LTV = £125,955):
@@ -578,11 +527,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 34. 77 Monagh Drive, Belfast, BT11 8EE
+### 31. 77 Monagh Drive, Belfast, BT11 8EE
 - **Asking Price:** £144,950
 - **Agency:** Ulster Property Sales (Andersonstown)
 - **Specs:** 3 Bed | 1 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-05-21 (58 days ago)
+- **Listed Date:** 2026-05-21 (59 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/77-monagh-drive-belfast/1078141) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=77%20Monagh%20Drive%2C%20Belfast%2C%20BT11%208EE)
 
 #### Monthly Repayment Comparison (90% LTV = £130,455):
@@ -595,11 +544,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 35. 21 Alford Park, Belfast, BT5 7FW
+### 32. 21 Alford Park, Belfast, BT5 7FW
 - **Asking Price:** £145,000
 - **Agency:** Reeds Rains (Ballyhackamore)
 - **Specs:** 3 Bed | 1 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-06-27 (21 days ago)
+- **Listed Date:** 2026-06-27 (22 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/21-alford-park-belfast/1085163) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=21%20Alford%20Park%2C%20Belfast%2C%20BT5%207FW)
 
 #### Monthly Repayment Comparison (90% LTV = £130,500):
@@ -612,11 +561,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 36. 73 Cairnsmore Avenue, Dundonald, Belfast, BT16 2SE
+### 33. 73 Cairnsmore Avenue, Dundonald, Belfast, BT16 2SE
 - **Asking Price:** £145,000
 - **Agency:** Andrews & Gregg (Dundonald)
 - **Specs:** 3 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-06-29 (19 days ago)
+- **Listed Date:** 2026-06-29 (20 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/73-cairnsmore-avenue-dundonald-belfast/1085225) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=73%20Cairnsmore%20Avenue%2C%20Dundonald%2C%20Belfast%2C%20BT16%202SE)
 
 #### Monthly Repayment Comparison (90% LTV = £130,500):
@@ -629,11 +578,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 37. 38 Burren Way, Cregagh, Belfast, BT6 0DW
+### 34. 38 Burren Way, Cregagh, Belfast, BT6 0DW
 - **Asking Price:** £145,000
 - **Agency:** McClearys Property Sales
 - **Specs:** 3 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-06 (12 days ago)
+- **Listed Date:** 2026-07-06 (13 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/38-burren-way-cregagh-belfast/1087913) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=38%20Burren%20Way%2C%20Cregagh%2C%20Belfast%2C%20BT6%200DW)
 
 #### Monthly Repayment Comparison (90% LTV = £130,500):
@@ -646,11 +595,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 38. 5 Rockdale Street, Belfast, BT12 7PA
+### 35. 5 Rockdale Street, Belfast, BT12 7PA
 - **Asking Price:** £145,000
 - **Agency:** TMC Estate Agents (Andersonstown)
 - **Specs:** 2 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-06 (12 days ago)
+- **Listed Date:** 2026-07-06 (13 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/5-rockdale-street-belfast/1086287) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=5%20Rockdale%20Street%2C%20Belfast%2C%20BT12%207PA)
 
 #### Monthly Repayment Comparison (90% LTV = £130,500):
@@ -663,11 +612,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 39. 94 Greenore Street, Belfast, BT6 8NF
+### 36. 94 Greenore Street, Belfast, BT6 8NF
 - **Asking Price:** £145,000
 - **Agency:** McClearys Property Sales
 - **Specs:** 2 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-11 (7 days ago)
+- **Listed Date:** 2026-07-11 (8 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/94-greenore-street-belfast/1088496) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=94%20Greenore%20Street%2C%20Belfast%2C%20BT6%208NF)
 
 #### Monthly Repayment Comparison (90% LTV = £130,500):
@@ -680,11 +629,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 40. 34 Donard Street, Ravenhill Road, Belfast, BT6 8EL
+### 37. 34 Donard Street, Ravenhill Road, Belfast, BT6 8EL
 - **Asking Price:** £149,950
 - **Agency:** McClearys Property Sales
 - **Specs:** 2 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-02 (16 days ago)
+- **Listed Date:** 2026-07-02 (17 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/34-donard-street-ravenhill-road-belfast/1085645) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=34%20Donard%20Street%2C%20Ravenhill%20Road%2C%20Belfast%2C%20BT6%208EL)
 
 #### Monthly Repayment Comparison (90% LTV = £134,955):
@@ -697,11 +646,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 41. 49 Willow Gardens, Dunmurry, Belfast, BT17 9QJ
+### 38. 49 Willow Gardens, Dunmurry, Belfast, BT17 9QJ
 - **Asking Price:** £149,950
 - **Agency:** Shooter Property Services (Lisburn)
 - **Specs:** 3 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-04 (14 days ago)
+- **Listed Date:** 2026-07-04 (15 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/49-willow-gardens-dunmurry-belfast/1087717) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=49%20Willow%20Gardens%2C%20Dunmurry%2C%20Belfast%2C%20BT17%209QJ)
 
 #### Monthly Repayment Comparison (90% LTV = £134,955):
@@ -714,11 +663,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 42. 24 Thornhill Court, Dunmurry, Belfast, BT17 0RA
+### 39. 24 Thornhill Court, Dunmurry, Belfast, BT17 0RA
 - **Asking Price:** £149,950
 - **Agency:** Ulster Property Sales (Andersonstown)
 - **Specs:** 3 Bed | 1 Bath | Townhouse | Tenure: Not Provided
-- **Listed Date:** 2026-07-09 (9 days ago)
+- **Listed Date:** 2026-07-09 (10 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/24-thornhill-court-dunmurry-belfast/1088545) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=24%20Thornhill%20Court%2C%20Dunmurry%2C%20Belfast%2C%20BT17%200RA)
 
 #### Monthly Repayment Comparison (90% LTV = £134,955):
@@ -731,11 +680,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 43. 82 Cheviot Avenue, Belfast, BT4 3AH
+### 40. 82 Cheviot Avenue, Belfast, BT4 3AH
 - **Asking Price:** £149,950
 - **Agency:** Iamsold NI
 - **Specs:** 3 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-09 (9 days ago)
+- **Listed Date:** 2026-07-09 (10 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/82-cheviot-avenue-belfast/1088000) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=82%20Cheviot%20Avenue%2C%20Belfast%2C%20BT4%203AH)
 
 #### Monthly Repayment Comparison (90% LTV = £134,955):
@@ -748,11 +697,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 44. 164 Connsbrook Avenue, Belfast, BT4 1JY
+### 41. 164 Connsbrook Avenue, Belfast, BT4 1JY
 - **Asking Price:** £155,000
 - **Agency:** John Minnis Estate Agents
 - **Specs:** 4 Bed | 1 Bath | Mid-terrace House | Tenure: Leasehold
-- **Listed Date:** 2026-07-11 (7 days ago)
+- **Listed Date:** 2026-07-11 (8 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/164-connsbrook-avenue-belfast/1088917) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=164%20Connsbrook%20Avenue%2C%20Belfast%2C%20BT4%201JY)
 
 #### Monthly Repayment Comparison (90% LTV = £139,500):
@@ -765,11 +714,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 45. 3 Maghies Place, Off Woodstock Road, Belfast, BT6 8HF
+### 42. 3 Maghies Place, Off Woodstock Road, Belfast, BT6 8HF
 - **Asking Price:** £157,500
 - **Agency:** Templeton Robinson (Ballyhackamore)
 - **Specs:** 3 Bed | 1 Bath | End Townhouse | Tenure: Not Provided
-- **Listed Date:** 2026-07-08 (10 days ago)
+- **Listed Date:** 2026-07-08 (11 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/3-maghies-place-off-woodstock-road-belfast/1088338) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=3%20Maghies%20Place%2C%20Off%20Woodstock%20Road%2C%20Belfast%2C%20BT6%208HF)
 
 #### Monthly Repayment Comparison (90% LTV = £141,750):
@@ -782,11 +731,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 46. 93 Dunraven Avenue, Belfast, BT5 5JS
+### 43. 93 Dunraven Avenue, Belfast, BT5 5JS
 - **Asking Price:** £159,950
 - **Agency:** John Minnis Estate Agents
 - **Specs:** 2 Bed | 1 Bath | End-terrace House | Tenure: Freehold
-- **Listed Date:** 2026-07-04 (14 days ago)
+- **Listed Date:** 2026-07-04 (15 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/93-dunraven-avenue-belfast/1087667) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=93%20Dunraven%20Avenue%2C%20Belfast%2C%20BT5%205JS)
 
 #### Monthly Repayment Comparison (90% LTV = £143,955):
@@ -799,11 +748,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 47. 7 Strandburn Parade, Belfast, BT4 1LZ
+### 44. 7 Strandburn Parade, Belfast, BT4 1LZ
 - **Asking Price:** £159,950
 - **Agency:** SMART Residential
 - **Specs:** 3 Bed | 1 Bath | Mid-terrace House | Tenure: Leasehold
-- **Listed Date:** 2026-07-06 (12 days ago)
+- **Listed Date:** 2026-07-06 (13 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/7-strandburn-parade-belfast/1087951) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=7%20Strandburn%20Parade%2C%20Belfast%2C%20BT4%201LZ)
 
 #### Monthly Repayment Comparison (90% LTV = £143,955):
@@ -816,11 +765,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 48. 200 Lenadoon Avenue, Belfast, BT11 9HG
+### 45. 200 Lenadoon Avenue, Belfast, BT11 9HG
 - **Asking Price:** £159,950
 - **Agency:** Ulster Property Sales (Andersonstown)
 - **Specs:** 3 Bed | 1 Bath | Mid-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-07 (11 days ago)
+- **Listed Date:** 2026-07-07 (12 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/200-lenadoon-avenue-belfast/1088078) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=200%20Lenadoon%20Avenue%2C%20Belfast%2C%20BT11%209HG)
 
 #### Monthly Repayment Comparison (90% LTV = £143,955):
@@ -833,11 +782,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 49. 83 Knockwood Park, Belfast, BT5 6GB
+### 46. 83 Knockwood Park, Belfast, BT5 6GB
 - **Asking Price:** £159,950
 - **Agency:** Vision Property NI
 - **Specs:** 3 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-10 (8 days ago)
+- **Listed Date:** 2026-07-10 (9 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/83-knockwood-park-belfast/1088794) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=83%20Knockwood%20Park%2C%20Belfast%2C%20BT5%206GB)
 
 #### Monthly Repayment Comparison (90% LTV = £143,955):
@@ -850,11 +799,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 50. 6 Sefton Park, Belfast, BT4 1PN
+### 47. 6 Sefton Park, Belfast, BT4 1PN
 - **Asking Price:** £165,000
 - **Agency:** Reeds Rains (Ballyhackamore)
 - **Specs:** 3 Bed | 1 Bath | Mid-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-06-27 (21 days ago)
+- **Listed Date:** 2026-06-27 (22 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/6-sefton-park-belfast/1085522) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=6%20Sefton%20Park%2C%20Belfast%2C%20BT4%201PN)
 
 #### Monthly Repayment Comparison (90% LTV = £148,500):
@@ -867,11 +816,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 51. 18 Dunraven Parade, Belfast, BT5 6BT
+### 48. 18 Dunraven Parade, Belfast, BT5 6BT
 - **Asking Price:** £165,000
 - **Agency:** Fetherstons (East Belfast Office)
 - **Specs:** 2 Bed | 1 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-06-27 (21 days ago)
+- **Listed Date:** 2026-06-27 (22 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/18-dunraven-parade-belfast/1085167) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=18%20Dunraven%20Parade%2C%20Belfast%2C%20BT5%206BT)
 
 #### Monthly Repayment Comparison (90% LTV = £148,500):
@@ -884,11 +833,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 52. 27 Clarendon Avenue, Belfast, BT5 5JT
+### 49. 27 Clarendon Avenue, Belfast, BT5 5JT
 - **Asking Price:** £169,950
 - **Agency:** John Minnis Estate Agents
 - **Specs:** 2 Bed | 1 Bath | Mid-terrace House | Tenure: Freehold
-- **Listed Date:** 2026-06-29 (19 days ago)
+- **Listed Date:** 2026-06-29 (20 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/27-clarendon-avenue-belfast/1085655) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=27%20Clarendon%20Avenue%2C%20Belfast%2C%20BT5%205JT)
 
 #### Monthly Repayment Comparison (90% LTV = £152,955):
@@ -901,11 +850,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 53. 58 Dromore Street, Cregagh Road, Belfast, BT6 8PF
+### 50. 58 Dromore Street, Cregagh Road, Belfast, BT6 8PF
 - **Asking Price:** £169,950
 - **Agency:** Pooler Estate Agents
 - **Specs:** 2 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-06-29 (19 days ago)
+- **Listed Date:** 2026-06-29 (20 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/58-dromore-street-cregagh-road-belfast/1085267) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=58%20Dromore%20Street%2C%20Cregagh%20Road%2C%20Belfast%2C%20BT6%208PF)
 
 #### Monthly Repayment Comparison (90% LTV = £152,955):
@@ -918,11 +867,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 54. 73 Cavehill Road, Belfast, BT15 5BH
+### 51. 73 Cavehill Road, Belfast, BT15 5BH
 - **Asking Price:** £169,950
 - **Agency:** Ulster Property Sales (Cavehill)
 - **Specs:** 4 Bed | 1 Bath | Mid-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-04 (14 days ago)
+- **Listed Date:** 2026-07-04 (15 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/73-cavehill-road-belfast/1087721) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=73%20Cavehill%20Road%2C%20Belfast%2C%20BT15%205BH)
 
 #### Monthly Repayment Comparison (90% LTV = £152,955):
@@ -935,11 +884,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 55. 65 Ramoan Drive, Belfast, BT11 8LH
+### 52. 65 Ramoan Drive, Belfast, BT11 8LH
 - **Asking Price:** £169,950
 - **Agency:** McGranaghan Estate Agents.com
 - **Specs:** 3 Bed | 1 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-11 (7 days ago)
+- **Listed Date:** 2026-07-11 (8 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/65-ramoan-drive-belfast/1088464) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=65%20Ramoan%20Drive%2C%20Belfast%2C%20BT11%208LH)
 
 #### Monthly Repayment Comparison (90% LTV = £152,955):
@@ -952,11 +901,28 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 56. 9 Wansbeck Street, Belfast, BT9 5FQ
+### 53. 5 Wedderburn Avenue, Finaghy, Belfast, BT10 0FY
+- **Asking Price:** £169,950
+- **Agency:** TMC Estate Agents (Finaghy)
+- **Specs:** 3 Bed | 1 Bath | Terrace House | Tenure: Not Provided
+- **Listed Date:** 2026-07-18 (1 day ago)
+- **Links:** [View on PropertyPal](https://www.propertypal.com/5-wedderburn-avenue-finaghy-belfast/1089809) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=5%20Wedderburn%20Avenue%2C%20Finaghy%2C%20Belfast%2C%20BT10%200FY)
+
+#### Monthly Repayment Comparison (90% LTV = £152,955):
+
+| Interest Rate | 25 Years | 30 Years | 35 Years |
+| :--- | :--- | :--- | :--- |
+| **4.5%** | £850.17 | £775 | £723.87 |
+| **5.0%** | £894.16 | £821.1 | £771.95 |
+| **5.5%** | £939.28 | £868.46 | £821.39 |
+
+---
+
+### 54. 9 Wansbeck Street, Belfast, BT9 5FQ
 - **Asking Price:** £170,000
 - **Agency:** Reeds Rains (Ormeau)
 - **Specs:** 2 Bed | 1 Bath | Mid-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-02 (16 days ago)
+- **Listed Date:** 2026-07-02 (17 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/9-wansbeck-street-belfast/1085607) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=9%20Wansbeck%20Street%2C%20Belfast%2C%20BT9%205FQ)
 
 #### Monthly Repayment Comparison (90% LTV = £153,000):
@@ -969,11 +935,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 57. 12 Arizona Street, Glen Road, Belfast, BT11 8AG
+### 55. 12 Arizona Street, Glen Road, Belfast, BT11 8AG
 - **Asking Price:** £174,950
 - **Agency:** Ulster Property Sales (Andersonstown)
 - **Specs:** 3 Bed | 1 Bath | Mid-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-08 (10 days ago)
+- **Listed Date:** 2026-07-08 (11 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/12-arizona-street-glen-road-belfast/1088317) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=12%20Arizona%20Street%2C%20Glen%20Road%2C%20Belfast%2C%20BT11%208AG)
 
 #### Monthly Repayment Comparison (90% LTV = £157,455):
@@ -986,11 +952,28 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 58. 158 Woodstock Road, Belfast, BT6 8AF
+### 56. 153 Falls Road, Belfast, BT12 6AF
+- **Asking Price:** £174,950
+- **Agency:** Ulster Property Sales (Andersonstown)
+- **Specs:** 4 Bed | 1 Bath | Terrace House | Tenure: Not Provided
+- **Listed Date:** 2026-07-18 (1 day ago)
+- **Links:** [View on PropertyPal](https://www.propertypal.com/153-falls-road-belfast/1089928) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=153%20Falls%20Road%2C%20Belfast%2C%20BT12%206AF)
+
+#### Monthly Repayment Comparison (90% LTV = £157,455):
+
+| Interest Rate | 25 Years | 30 Years | 35 Years |
+| :--- | :--- | :--- | :--- |
+| **4.5%** | £875.19 | £797.8 | £745.17 |
+| **5.0%** | £920.47 | £845.25 | £794.66 |
+| **5.5%** | £966.91 | £894.01 | £845.56 |
+
+---
+
+### 57. 158 Woodstock Road, Belfast, BT6 8AF
 - **Asking Price:** £175,000
 - **Agency:** Pooler Estate Agents
 - **Specs:** 3 Bed | 2 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-05-30 (49 days ago)
+- **Listed Date:** 2026-05-30 (50 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/158-woodstock-road-belfast/1080177) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=158%20Woodstock%20Road%2C%20Belfast%2C%20BT6%208AF)
 
 #### Monthly Repayment Comparison (90% LTV = £157,500):
@@ -1003,11 +986,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 59. 20 Hewitt Parade, Belfast, BT5 6JT
+### 58. 20 Hewitt Parade, Belfast, BT5 6JT
 - **Asking Price:** £175,000
 - **Agency:** Simon Brien (East Belfast)
 - **Specs:** 3 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-17 (1 day ago)
+- **Listed Date:** 2026-07-17 (2 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/20-hewitt-parade-belfast/1088848) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=20%20Hewitt%20Parade%2C%20Belfast%2C%20BT5%206JT)
 
 #### Monthly Repayment Comparison (90% LTV = £157,500):
@@ -1020,11 +1003,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 60. 3 Delaware Street, Ravenhill, Belfast, BT6 8ET
+### 59. 3 Delaware Street, Ravenhill, Belfast, BT6 8ET
 - **Asking Price:** £179,950
 - **Agency:** Pooler Estate Agents
 - **Specs:** 4 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-03 (15 days ago)
+- **Listed Date:** 2026-07-03 (16 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/3-delaware-street-ravenhill-belfast/1086621) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=3%20Delaware%20Street%2C%20Ravenhill%2C%20Belfast%2C%20BT6%208ET)
 
 #### Monthly Repayment Comparison (90% LTV = £161,955):
@@ -1037,11 +1020,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 61. 22 Redwood Grove, Dunmurry, Belfast, BT17 9RN
+### 60. 22 Redwood Grove, Dunmurry, Belfast, BT17 9RN
 - **Asking Price:** £180,000
 - **Agency:** Wilsons Auctions (NI)
 - **Specs:** 3 Bed | 2 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-08 (10 days ago)
+- **Listed Date:** 2026-07-08 (11 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/22-redwood-grove-dunmurry-belfast/1087601) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=22%20Redwood%20Grove%2C%20Dunmurry%2C%20Belfast%2C%20BT17%209RN)
 
 #### Monthly Repayment Comparison (90% LTV = £162,000):
@@ -1054,11 +1037,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 62. 44 Walmer Street, Belfast, BT7 3EB
+### 61. 44 Walmer Street, Belfast, BT7 3EB
 - **Asking Price:** £184,950
 - **Agency:** Anthony Jamieson Estate Agents
 - **Specs:** 2 Bed | 1 Bath | Mid-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-06-26 (22 days ago)
+- **Listed Date:** 2026-06-26 (23 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/44-walmer-street-belfast/1054461) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=44%20Walmer%20Street%2C%20Belfast%2C%20BT7%203EB)
 
 #### Monthly Repayment Comparison (90% LTV = £166,455):
@@ -1071,11 +1054,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 63. 82 Melrose Street, Belfast, BT9 7DQ
+### 62. 82 Melrose Street, Belfast, BT9 7DQ
 - **Asking Price:** £184,950
 - **Agency:** Simon Brien (South Belfast)
 - **Specs:** 3 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-06-30 (18 days ago)
+- **Listed Date:** 2026-06-30 (19 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/82-melrose-street-belfast/1085471) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=82%20Melrose%20Street%2C%20Belfast%2C%20BT9%207DQ)
 
 #### Monthly Repayment Comparison (90% LTV = £166,455):
@@ -1088,11 +1071,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 64. 8 Hewitt Parade, Ballyhackamore, Belfast, BT5 6JT
+### 63. 8 Hewitt Parade, Ballyhackamore, Belfast, BT5 6JT
 - **Asking Price:** £185,000
 - **Agency:** Templeton Robinson (Ballyhackamore)
 - **Specs:** 2 Bed | 1 Bath | Mid-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-06-29 (19 days ago)
+- **Listed Date:** 2026-06-29 (20 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/8-hewitt-parade-ballyhackamore-belfast/1085692) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=8%20Hewitt%20Parade%2C%20Ballyhackamore%2C%20Belfast%2C%20BT5%206JT)
 
 #### Monthly Repayment Comparison (90% LTV = £166,500):
@@ -1105,11 +1088,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 65. 38 Willowholme Drive, Belfast, BT6 8PB
+### 64. 38 Willowholme Drive, Belfast, BT6 8PB
 - **Asking Price:** £185,000
 - **Agency:** McClearys Property Sales
 - **Specs:** 3 Bed | 1 Bath | Townhouse | Tenure: Not Provided
-- **Listed Date:** 2026-07-01 (17 days ago)
+- **Listed Date:** 2026-07-01 (18 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/38-willowholme-drive-belfast/1086166) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=38%20Willowholme%20Drive%2C%20Belfast%2C%20BT6%208PB)
 
 #### Monthly Repayment Comparison (90% LTV = £166,500):
@@ -1122,11 +1105,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 66. 6 Hampton Drive, Belfast, BT7 3DE
+### 65. 6 Hampton Drive, Belfast, BT7 3DE
 - **Asking Price:** £189,950
 - **Agency:** Property People
 - **Specs:** 2 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-09 (9 days ago)
+- **Listed Date:** 2026-07-09 (10 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/6-hampton-drive-belfast/1088026) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=6%20Hampton%20Drive%2C%20Belfast%2C%20BT7%203DE)
 
 #### Monthly Repayment Comparison (90% LTV = £170,955):
@@ -1139,11 +1122,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 67. 7 Larkfield Grove, Belfast, BT4 1QH
+### 66. 7 Larkfield Grove, Belfast, BT4 1QH
 - **Asking Price:** £189,950
 - **Agency:** Ulster Property Sales (Ballyhackamore)
 - **Specs:** 3 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-11 (7 days ago)
+- **Listed Date:** 2026-07-11 (8 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/7-larkfield-grove-belfast/1088908) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=7%20Larkfield%20Grove%2C%20Belfast%2C%20BT4%201QH)
 
 #### Monthly Repayment Comparison (90% LTV = £170,955):
@@ -1156,11 +1139,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 68. 4 Braniel Park, Belfast, BT5 7JL
+### 67. 4 Braniel Park, Belfast, BT5 7JL
 - **Asking Price:** £189,950
 - **Agency:** Simon Brien (East Belfast)
 - **Specs:** 3 Bed | 1 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-15 (3 days ago)
+- **Listed Date:** 2026-07-15 (4 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/4-braniel-park-belfast/1088617) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=4%20Braniel%20Park%2C%20Belfast%2C%20BT5%207JL)
 
 #### Monthly Repayment Comparison (90% LTV = £170,955):
@@ -1173,11 +1156,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 69. 19 Evelyn Avenue, Belfast, BT5 5DE
+### 68. 19 Evelyn Avenue, Belfast, BT5 5DE
 - **Asking Price:** £195,000
 - **Agency:** Reeds Rains (Ballyhackamore)
 - **Specs:** 2 Bed | 1 Bath | Mid-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-06-18 (30 days ago)
+- **Listed Date:** 2026-06-18 (31 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/19-evelyn-avenue-belfast/1082604) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=19%20Evelyn%20Avenue%2C%20Belfast%2C%20BT5%205DE)
 
 #### Monthly Repayment Comparison (90% LTV = £175,500):
@@ -1190,11 +1173,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 70. 12 School Road, Newtownbreda, Belfast, BT8 6BT
+### 69. 12 School Road, Newtownbreda, Belfast, BT8 6BT
 - **Asking Price:** £195,000
 - **Agency:** Ulster Property Sales (Forestside)
 - **Specs:** 2 Bed | 1 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-07 (11 days ago)
+- **Listed Date:** 2026-07-07 (12 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/12-school-road-newtownbreda-belfast/1086444) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=12%20School%20Road%2C%20Newtownbreda%2C%20Belfast%2C%20BT8%206BT)
 
 #### Monthly Repayment Comparison (90% LTV = £175,500):
@@ -1207,11 +1190,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 71. 13 Chesham Parade, Ravenhill, Belfast, BT6 8GR
+### 70. 13 Chesham Parade, Ravenhill, Belfast, BT6 8GR
 - **Asking Price:** £199,000
 - **Agency:** Assure Move NI
 - **Specs:** 3 Bed | 1 Bath | End-terrace House | Tenure: Freehold
-- **Listed Date:** 2026-06-27 (21 days ago)
+- **Listed Date:** 2026-06-27 (22 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/13-chesham-parade-ravenhill-belfast/1085152) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=13%20Chesham%20Parade%2C%20Ravenhill%2C%20Belfast%2C%20BT6%208GR)
 
 #### Monthly Repayment Comparison (90% LTV = £179,100):
@@ -1224,11 +1207,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 72. 9 Lindsay Court, Belfast, BT7 1AU
+### 71. 9 Lindsay Court, Belfast, BT7 1AU
 - **Asking Price:** £199,950
 - **Agency:** Property People
 - **Specs:** 3 Bed | 1 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-06-28 (20 days ago)
+- **Listed Date:** 2026-06-28 (21 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/9-lindsay-court-belfast/1085540) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=9%20Lindsay%20Court%2C%20Belfast%2C%20BT7%201AU)
 
 #### Monthly Repayment Comparison (90% LTV = £179,955):
@@ -1241,11 +1224,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 73. 2 Rossnareen Avenue, Shaws Road, Belfast, BT11 8LP
+### 72. 2 Rossnareen Avenue, Shaws Road, Belfast, BT11 8LP
 - **Asking Price:** £204,950
 - **Agency:** Ulster Property Sales (Andersonstown)
 - **Specs:** 3 Bed | 2 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-07 (11 days ago)
+- **Listed Date:** 2026-07-07 (12 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/2-rossnareen-avenue-shaws-road-belfast/1086317) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=2%20Rossnareen%20Avenue%2C%20Shaws%20Road%2C%20Belfast%2C%20BT11%208LP)
 
 #### Monthly Repayment Comparison (90% LTV = £184,455):
@@ -1258,11 +1241,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 74. 37 Park Avenue, Belfast, BT4 1PU
+### 73. 37 Park Avenue, Belfast, BT4 1PU
 - **Asking Price:** £209,950
 - **Agency:** SMART Residential
 - **Specs:** 3 Bed | 1 Bath | Mid-terrace House | Tenure: Leasehold
-- **Listed Date:** 2026-06-30 (18 days ago)
+- **Listed Date:** 2026-06-30 (19 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/37-park-avenue-belfast/1086008) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=37%20Park%20Avenue%2C%20Belfast%2C%20BT4%201PU)
 
 #### Monthly Repayment Comparison (90% LTV = £188,955):
@@ -1275,11 +1258,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 75. 3a Ashmount Park, Belfast, BT4 2FJ
+### 74. 3a Ashmount Park, Belfast, BT4 2FJ
 - **Asking Price:** £214,950
 - **Agency:** Ulster Property Sales (Ballyhackamore)
 - **Specs:** 3 Bed | 1 Bath | Mid-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-06-30 (18 days ago)
+- **Listed Date:** 2026-06-30 (19 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/3a-ashmount-park-belfast/1085463) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=3a%20Ashmount%20Park%2C%20Belfast%2C%20BT4%202FJ)
 
 #### Monthly Repayment Comparison (90% LTV = £193,455):
@@ -1292,11 +1275,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 76. 16 Tullymore Drive, Belfast, BT11 8NH
+### 75. 16 Tullymore Drive, Belfast, BT11 8NH
 - **Asking Price:** £219,950
 - **Agency:** McGranaghan Estate Agents.com
 - **Specs:** 3 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-10 (8 days ago)
+- **Listed Date:** 2026-07-10 (9 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/16-tullymore-drive-belfast/1088792) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=16%20Tullymore%20Drive%2C%20Belfast%2C%20BT11%208NH)
 
 #### Monthly Repayment Comparison (90% LTV = £197,955):
@@ -1309,11 +1292,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 77. 27 Brookhill Avenue, Belfast, BT14 6BS
+### 76. 27 Brookhill Avenue, Belfast, BT14 6BS
 - **Asking Price:** £220,000
 - **Agency:** McGranaghan Estate Agents.com
 - **Specs:** 5 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-07 (11 days ago)
+- **Listed Date:** 2026-07-07 (12 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/27-brookhill-avenue-belfast/1088063) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=27%20Brookhill%20Avenue%2C%20Belfast%2C%20BT14%206BS)
 
 #### Monthly Repayment Comparison (90% LTV = £198,000):
@@ -1326,11 +1309,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 78. 37 Willowbank Gardens, Belfast, BT15 5AJ
+### 77. 37 Willowbank Gardens, Belfast, BT15 5AJ
 - **Asking Price:** £220,000
 - **Agency:** Simon Brien (North Belfast)
 - **Specs:** 3 Bed | 1 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-10 (8 days ago)
+- **Listed Date:** 2026-07-10 (9 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/37-willowbank-gardens-belfast/1088253) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=37%20Willowbank%20Gardens%2C%20Belfast%2C%20BT15%205AJ)
 
 #### Monthly Repayment Comparison (90% LTV = £198,000):
@@ -1343,11 +1326,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 79. 67 Rushfield Avenue, Belfast, BT7 3FP
+### 78. 67 Rushfield Avenue, Belfast, BT7 3FP
 - **Asking Price:** £224,950
 - **Agency:** CPS (Belfast)
 - **Specs:** 3 Bed | 1 Bath | Mid-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-02 (16 days ago)
+- **Listed Date:** 2026-07-02 (17 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/67-rushfield-avenue-belfast/1085558) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=67%20Rushfield%20Avenue%2C%20Belfast%2C%20BT7%203FP)
 
 #### Monthly Repayment Comparison (90% LTV = £202,455):
@@ -1360,11 +1343,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 80. 51 Candahar Street, Belfast, BT7 3AR
+### 79. 51 Candahar Street, Belfast, BT7 3AR
 - **Asking Price:** £225,000
 - **Agency:** Fetherstons (South Belfast Office)
 - **Specs:** 5 Bed | 1 Bath | Mid-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-05-20 (59 days ago)
+- **Listed Date:** 2026-05-20 (60 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/51-candahar-street-belfast/1061982) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=51%20Candahar%20Street%2C%20Belfast%2C%20BT7%203AR)
 
 #### Monthly Repayment Comparison (90% LTV = £202,500):
@@ -1377,11 +1360,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 81. 13 Glantane Drive, Belfast, BT15 3FE
+### 80. 13 Glantane Drive, Belfast, BT15 3FE
 - **Asking Price:** £225,000
 - **Agency:** Simon Brien (North Belfast)
 - **Specs:** 4 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-09 (9 days ago)
+- **Listed Date:** 2026-07-09 (10 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/13-glantane-drive-belfast/1088561) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=13%20Glantane%20Drive%2C%20Belfast%2C%20BT15%203FE)
 
 #### Monthly Repayment Comparison (90% LTV = £202,500):
@@ -1394,11 +1377,11 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 82. 12 Chesham Crescent, Ravenhill/ Cregagh, Belfast, BT6 8GW
+### 81. 12 Chesham Crescent, Ravenhill/ Cregagh, Belfast, BT6 8GW
 - **Asking Price:** £229,950
 - **Agency:** Ulster Property Sales (Forestside)
 - **Specs:** 3 Bed | 2 Bath | End-terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-16 (2 days ago)
+- **Listed Date:** 2026-07-16 (3 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/12-chesham-crescent-ravenhill-cregagh-belfast/1060689) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=12%20Chesham%20Crescent%2C%20Ravenhill%2F%20Cregagh%2C%20Belfast%2C%20BT6%208GW)
 
 #### Monthly Repayment Comparison (90% LTV = £206,955):
@@ -1411,12 +1394,29 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 
 ---
 
-### 83. 28 Elaine Street, Stranmillis, Belfast, BT9 5AR
+### 82. 28 Elaine Street, Stranmillis, Belfast, BT9 5AR
 - **Asking Price:** £230,000
 - **Agency:** R Stanley Laird & Son
 - **Specs:** 4 Bed | 2 Bath | Mid-terrace House | Tenure: Leasehold
-- **Listed Date:** 2026-07-01 (17 days ago)
+- **Listed Date:** 2026-07-01 (18 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/28-elaine-street-stranmillis-belfast/1082132) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=28%20Elaine%20Street%2C%20Stranmillis%2C%20Belfast%2C%20BT9%205AR)
+
+#### Monthly Repayment Comparison (90% LTV = £207,000):
+
+| Interest Rate | 25 Years | 30 Years | 35 Years |
+| :--- | :--- | :--- | :--- |
+| **4.5%** | £1,150.57 | £1,048.84 | £979.64 |
+| **5.0%** | £1,210.1 | £1,111.22 | £1,044.7 |
+| **5.5%** | £1,271.16 | £1,175.32 | £1,111.62 |
+
+---
+
+### 83. 87 Ravenhill Gardens, Belfast, BT6 8GQ
+- **Asking Price:** £230,000
+- **Agency:** Michael Chandler Estate Agents (Belfast)
+- **Specs:** 3 Bed | 2 Bath | Mid-terrace House | Tenure: Leasehold
+- **Listed Date:** 2026-07-18 (1 day ago)
+- **Links:** [View on PropertyPal](https://www.propertypal.com/87-ravenhill-gardens-belfast/1089939) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=87%20Ravenhill%20Gardens%2C%20Belfast%2C%20BT6%208GQ)
 
 #### Monthly Repayment Comparison (90% LTV = £207,000):
 
@@ -1432,7 +1432,7 @@ Daily property report for residential terraced houses under **£250,000** in Gre
 - **Asking Price:** £250,000
 - **Agency:** GOC Estate Agents
 - **Specs:** 5 Bed | 1 Bath | Terrace House | Tenure: Not Provided
-- **Listed Date:** 2026-07-11 (7 days ago)
+- **Listed Date:** 2026-07-11 (8 days ago)
 - **Links:** [View on PropertyPal](https://www.propertypal.com/9-canterbury-street-off-university-street-belfast/1088858) | [View on Google Maps](https://www.google.com/maps/search/?api=1&query=9%20Canterbury%20Street%2C%20Off%20University%20Street%2C%20Belfast%2C%20BT7%201LB)
 
 #### Monthly Repayment Comparison (90% LTV = £225,000):
