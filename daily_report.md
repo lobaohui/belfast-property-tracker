@@ -1,4 +1,4 @@
-# Belfast Property Market Report - 2026-08-20
+# Belfast Property Market Report - 2026-08-21
 
 Daily property report for residential terraced houses under **£250,000** in Greater Belfast. Includes 90% LTV monthly mortgage repayments for **25, 30, and 35 years** across **4.5%, 5.0%, and 5.5%** interest rates.
 
